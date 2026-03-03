@@ -16,6 +16,16 @@ public class InteractionHub : Hub
     }
 
     /// <summary>
+    /// Called when a client connects to the hub.
+    /// </summary>
+    public override async Task OnConnectedAsync()
+    {
+        _logger.LogInformation("Connection {ConnectionId} connected to InteractionHub", 
+            Context.ConnectionId);
+        await base.OnConnectedAsync();
+    }
+
+    /// <summary>
     /// Joins a blog post group to receive real-time updates for that post.
     /// </summary>
     /// <param name="blogPostId">ID of the blog post to subscribe to</param>

@@ -75,14 +75,25 @@ public class HomeController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error(int? statusCode = null)
     {
+        _logger.LogWarning("Error page requested with status code: {StatusCode}", statusCode);
+        
         if (statusCode.HasValue)
         {
             if (statusCode == 404)
             {
                 return View("NotFound");
             }
+            else if (statusCode == 500)
+            {
+                return View("ServerError");
+            }
         }
 
-        return View();
+        var model = new ErrorViewModel
+        {
+            RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        };
+
+        return View(model);
     }
 }

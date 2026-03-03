@@ -1,0 +1,63 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["PageNotFound"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="error-page">
+                <h1 class="display-1 fw-bold text-primary">404</h1>
+                <h2 class="mb-4">@Localizer["PageNotFound"]</h2>
+                <p class="lead text-muted mb-4">
+                    @Localizer["PageNotFoundMessage"]
+                </p>
+                
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg">
+                        <i class="bi bi-house-door"></i> @Localizer["GoToHomepage"]
+                    </a>
+                    <a asp-controller="Blog" asp-action="Search" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-search"></i> @Localizer["SearchBlog"]
+                    </a>
+                </div>
+                
+                <div class="mt-5">
+                    <p class="text-muted">@Localizer["SuggestedPages"]:</p>
+                    <ul class="list-unstyled">
+                        <li><a asp-controller="Home" asp-action="Index">@Localizer["Home"]</a></li>
+                        <li><a asp-controller="Home" asp-action="About">@Localizer["About"]</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">@Localizer["Contact"]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .error-page {
+        padding: 2rem 0;
+    }
+    
+    .error-page h1 {
+        font-size: 8rem;
+        line-height: 1;
+        margin-bottom: 1rem;
+    }
+    
+    .error-page h2 {
+        font-size: 2rem;
+    }
+    
+    @@media (max-width: 768px) {
+        .error-page h1 {
+            font-size: 5rem;
+        }
+        
+        .error-page h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>

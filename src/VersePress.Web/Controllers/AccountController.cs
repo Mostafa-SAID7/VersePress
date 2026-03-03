@@ -54,13 +54,15 @@ public class AccountController : Controller
 
         if (result.Succeeded)
         {
-            _logger.LogInformation("User created a new account with password.");
+            _logger.LogInformation("User {UserName} ({Email}) created a new account at {Time}", 
+                model.UserName, model.Email, DateTime.UtcNow);
 
             // Assign Author role by default
             await _userManager.AddToRoleAsync(user, "Author");
 
             await _signInManager.SignInAsync(user, isPersistent: false);
-            _logger.LogInformation("User logged in after registration.");
+            _logger.LogInformation("User {Email} logged in after registration at {Time}", 
+                model.Email, DateTime.UtcNow);
 
             return RedirectToLocal(returnUrl);
         }
@@ -99,17 +101,21 @@ public class AccountController : Controller
 
         if (result.Succeeded)
         {
-            _logger.LogInformation("User logged in.");
+            _logger.LogInformation("User {Email} logged in successfully at {Time}", 
+                model.Email, DateTime.UtcNow);
             return RedirectToLocal(model.ReturnUrl);
         }
 
         if (result.IsLockedOut)
         {
-            _logger.LogWarning("User account locked out.");
+            _logger.LogWarning("User {Email} account locked out at {Time}", 
+                model.Email, DateTime.UtcNow);
             ModelState.AddModelError(string.Empty, "Account locked out. Please try again later.");
             return View(model);
         }
 
+        _logger.LogWarning("Failed login attempt for user {Email} at {Time}", 
+            model.Email, DateTime.UtcNow);
         ModelState.AddModelError(string.Empty, "Invalid login attempt.");
         return View(model);
     }
@@ -119,8 +125,10 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
+        var userEmail = User.Identity?.Name;
         await _signInManager.SignOutAsync();
-        _logger.LogInformation("User logged out.");
+        _logger.LogInformation("User {Email} logged out at {Time}", 
+            userEmail, DateTime.UtcNow);
         return RedirectToAction(nameof(HomeController.Index), "Home");
     }
 

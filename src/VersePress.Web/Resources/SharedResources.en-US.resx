@@ -75,4 +75,40 @@
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle Theme</value>
   </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</value>
+  </data>
+  <data name="GoToHomepage" xml:space="preserve">
+    <value>Go to Homepage</value>
+  </data>
+  <data name="SearchBlog" xml:space="preserve">
+    <value>Search Blog</value>
+  </data>
+  <data name="SuggestedPages" xml:space="preserve">
+    <value>Suggested Pages</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Server Error</value>
+  </data>
+  <data name="ServerErrorMessage" xml:space="preserve">
+    <value>We're sorry, but something went wrong on our end. Our team has been notified and is working to fix the issue.</value>
+  </data>
+  <data name="ServerErrorDetails" xml:space="preserve">
+    <value>The error has been logged and our technical team will investigate it shortly.</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
+  <data name="NeedHelp" xml:space="preserve">
+    <value>Need help? Contact our support team.</value>
+  </data>
+  <data name="ContactSupport" xml:space="preserve">
+    <value>Contact Support</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
 </root>

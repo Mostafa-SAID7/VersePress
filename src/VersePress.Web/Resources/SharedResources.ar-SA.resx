@@ -75,4 +75,40 @@
   <data name="ToggleTheme" xml:space="preserve">
     <value>تبديل المظهر</value>
   </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>الصفحة غير موجودة</value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>الصفحة التي تبحث عنها قد تكون قد تم حذفها أو تغيير اسمها أو أنها غير متاحة مؤقتاً.</value>
+  </data>
+  <data name="GoToHomepage" xml:space="preserve">
+    <value>الذهاب للصفحة الرئيسية</value>
+  </data>
+  <data name="SearchBlog" xml:space="preserve">
+    <value>البحث في المدونة</value>
+  </data>
+  <data name="SuggestedPages" xml:space="preserve">
+    <value>صفحات مقترحة</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>خطأ في الخادم</value>
+  </data>
+  <data name="ServerErrorMessage" xml:space="preserve">
+    <value>نأسف، حدث خطأ من جانبنا. تم إبلاغ فريقنا ويعمل على إصلاح المشكلة.</value>
+  </data>
+  <data name="ServerErrorDetails" xml:space="preserve">
+    <value>تم تسجيل الخطأ وسيقوم فريقنا الفني بالتحقيق فيه قريباً.</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>حاول مرة أخرى</value>
+  </data>
+  <data name="NeedHelp" xml:space="preserve">
+    <value>هل تحتاج مساعدة؟ اتصل بفريق الدعم.</value>
+  </data>
+  <data name="ContactSupport" xml:space="preserve">
+    <value>اتصل بالدعم</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>العودة</value>
+  </data>
 </root>
