@@ -16,3 +16,5 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Infrastructure\obj
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Infrastructure\bin\Debug\net9.0\VersePress.Application.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Infrastructure\bin\Debug\net9.0\VersePress.Application.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Infrastructure\obj\Debug\net9.0\VersePress.Infrastructure.sourcelink.json
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Infrastructure\bin\Debug\net9.0\VersePress.Infrastructure.runtimeconfig.json
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Infrastructure\obj\Debug\net9.0\VersePress.Infrastructure.genruntimeconfig.cache

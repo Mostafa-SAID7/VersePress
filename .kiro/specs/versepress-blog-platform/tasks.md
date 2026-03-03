@@ -48,7 +48,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Create TagValidator, CategoryValidator, SeriesValidator, ProjectValidator for bilingual name validation
     - _Requirements: 10.2, 21.1, 21.2, 21.3, 21.4, 21.5, 21.6, 21.8, 29.2, 29.3_
 
-- [~] 4. Implement Infrastructure layer - Database configuration
+- [x] 4. Implement Infrastructure layer - Database configuration
   - [x] 4.1 Create ApplicationDbContext inheriting from IdentityDbContext
     - Configure DbSet properties for all entities
     - Override OnModelCreating for Fluent API configurations
@@ -62,7 +62,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Configure cascade delete behaviors: BlogPost deletion cascades to Comments/Reactions/Shares; User deletion restricted if has posts
     - _Requirements: 1.1, 1.4, 1.7, 5.2, 5.3, 12.8, 15.3, 15.4, 18.2, 18.3, 28.3, 28.4_
   
-  - [~] 4.3 Create database migrations
+  - [x] 4.3 Create database migrations
     - Generate initial migration with all entities and configurations
     - Configure automatic migration application on startup in development environment
     - _Requirements: 18.8_
