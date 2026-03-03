@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "About";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-4 mb-4">About VersePress</h1>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Our Mission</h2>
+                    <p class="lead">
+                        VersePress is a modern, bilingual blogging platform designed to empower writers and content creators
+                        to share their stories with the world in both English and Arabic.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Features</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Bilingual Support:</strong> Write and publish content in English and Arabic with full RTL support
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Real-time Interactions:</strong> Engage with readers through comments and reactions
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>SEO Optimized:</strong> Built-in SEO features to help your content reach more readers
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Dark Mode:</strong> Comfortable reading experience in any lighting condition
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Series & Projects:</strong> Organize your content into series and projects
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Technology</h2>
+                    <p>
+                        Built with modern web technologies including ASP.NET Core 9, Entity Framework Core,
+                        SignalR for real-time features, and Bootstrap 5 for responsive design.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a asp-action="Contact" class="btn btn-primary btn-lg">Get in Touch</a>
+                <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary btn-lg">Join Us</a>
+            </div>
+        </div>
+    </div>
+</div>
