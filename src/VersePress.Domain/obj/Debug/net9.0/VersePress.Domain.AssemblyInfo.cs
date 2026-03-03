@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VersePress.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29f921e77a4650bb5bb618fc4cc4662af861e16e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0039758918b4222f6f27738da3a4db61ec28f2e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("VersePress.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VersePress.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

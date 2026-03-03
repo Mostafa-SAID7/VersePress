@@ -208,8 +208,8 @@ This implementation plan breaks down the VersePress bilingual blog platform into
   - Ask the user if questions arise
 
 
-- [ ] 10. Implement Web layer - Controllers and ViewModels
-  - [ ] 10.1 Create HomeController
+- [x] 10. Implement Web layer - Controllers and ViewModels
+  - [x] 10.1 Create HomeController
     - Implement Index action: fetch featured posts (max 3) and recent posts (10 per page), return HomeViewModel
     - Implement About action: return static about page
     - Implement Contact GET action: display contact form
@@ -217,7 +217,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Implement Error action: handle 404 and 500 errors with custom pages
     - _Requirements: 22.1, 22.2, 22.3, 22.6, 24.1, 24.2, 29.1, 29.4, 29.5_
   
-  - [ ] 10.2 Create BlogController
+  - [x] 10.2 Create BlogController
     - Implement Details action: fetch post by slug, load comments, reactions, related posts, return BlogPostDetailViewModel
     - Implement ByTag action: fetch posts by tag slug, paginate results
     - Implement ByCategory action: fetch posts by category slug, paginate results
@@ -227,7 +227,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Increment view count asynchronously on Details action
     - _Requirements: 7.1, 14.1, 14.3, 14.4, 15.5, 15.6, 22.5, 28.5, 28.6, 28.8_
   
-  - [ ] 10.3 Create AuthorController with [Authorize(Policy = "AuthorPolicy")]
+  - [x] 10.3 Create AuthorController with [Authorize(Policy = "AuthorPolicy")]
     - Implement Profile action: display author info, posts, stats (total posts, total views)
     - Implement Dashboard action: display author's own posts with edit/delete options
     - Implement Create GET action: display blog post creation form
@@ -237,7 +237,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Implement Delete POST action: verify ownership, call BlogPostService.DeleteBlogPostAsync, redirect to Dashboard
     - _Requirements: 10.1, 10.3, 10.5, 10.6, 10.7, 23.1, 23.2, 23.3, 23.4_
   
-  - [ ] 10.4 Create AdminController with [Authorize(Policy = "AdminPolicy")]
+  - [x] 10.4 Create AdminController with [Authorize(Policy = "AdminPolicy")]
     - Implement Dashboard action: fetch analytics via AnalyticsService, return AdminDashboardViewModel
     - Implement Posts action: display all posts with edit/delete options
     - Implement Comments action: display pending comments with approve/reject buttons
@@ -248,7 +248,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 9.6, 9.7, 10.8, 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.7, 13.8_
 
 
-  - [ ] 10.5 Create API controllers for AJAX operations
+  - [x] 10.5 Create API controllers for AJAX operations
     - Create CommentApiController: POST /api/comments (create comment), returns JSON
     - Create ReactionApiController: POST /api/reactions (add/update reaction), DELETE /api/reactions (remove reaction), returns JSON
     - Create ShareApiController: POST /api/shares (record share event), returns JSON
@@ -256,7 +256,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Apply [Authorize] attribute to require authentication
     - _Requirements: 4.1, 5.1, 8.1, 9.4, 19.1, 19.5_
   
-  - [ ] 10.6 Create ViewModels
+  - [x] 10.6 Create ViewModels
     - Create HomeViewModel with FeaturedPosts, RecentPosts, CurrentPage, TotalPages
     - Create BlogPostDetailViewModel with Post, Comments, ReactionCounts, UserReaction, RelatedPosts, PreviousInSeries, NextInSeries
     - Create AdminDashboardViewModel with all analytics properties
