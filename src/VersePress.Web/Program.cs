@@ -13,6 +13,14 @@ builder.Services.AddControllersWithViews();
 // Add memory cache for view counting
 builder.Services.AddMemoryCache();
 
+// Configure SignalR with JSON serialization options
+builder.Services.AddSignalR()
+    .AddJsonProtocol(options =>
+    {
+        options.PayloadSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+        options.PayloadSerializerOptions.WriteIndented = false;
+    });
+
 // Configure Entity Framework Core with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
@@ -34,6 +42,21 @@ builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
 builder.Services.AddScoped<ISeoService, SeoService>();
 builder.Services.AddScoped<IViewCounterService, ViewCounterService>();
 builder.Services.AddScoped<IShareTrackingService, ShareTrackingService>();
+
+// Configure CORS for SignalR connections
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("SignalRCorsPolicy", policy =>
+    {
+        policy.WithOrigins(
+                builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() 
+                ?? new[] { "http://localhost:5000", "https://localhost:5001" }
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 
 var app = builder.Build();
 
@@ -67,9 +90,16 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+// Enable CORS for SignalR
+app.UseCors("SignalRCorsPolicy");
+
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
+// Map SignalR hub endpoints
+app.MapHub<VersePress.Web.Hubs.NotificationHub>("/hubs/notifications");
+app.MapHub<VersePress.Web.Hubs.InteractionHub>("/hubs/interactions");
 
 app.MapControllerRoute(
     name: "default",

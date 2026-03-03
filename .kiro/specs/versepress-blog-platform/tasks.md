@@ -160,21 +160,21 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - _Requirements: 26.6, 26.7_
 
 
-- [~] 7. Implement SignalR hubs for real-time features
-  - [~] 7.1 Create NotificationHub
+- [x] 7. Implement SignalR hubs for real-time features
+  - [x] 7.1 Create NotificationHub
     - Implement SendNotification method for targeted user messaging
     - Implement MarkAsRead method for notification updates
     - Configure user groups by UserId for efficient routing
     - _Requirements: 19.1, 19.2, 19.3, 19.5_
   
-  - [~] 7.2 Create InteractionHub
+  - [x] 7.2 Create InteractionHub
     - Implement BroadcastReaction method for real-time reaction updates
     - Implement BroadcastComment method for real-time comment updates
     - Configure client groups by BlogPostId for efficient broadcasting
     - Ensure broadcasts complete within 500ms
     - _Requirements: 4.2, 4.6, 5.4_
   
-  - [~] 7.3 Configure SignalR in Program.cs
+  - [x] 7.3 Configure SignalR in Program.cs
     - Add SignalR services with JSON serialization options
     - Map hub endpoints: /hubs/notifications, /hubs/interactions
     - Configure CORS for SignalR connections
