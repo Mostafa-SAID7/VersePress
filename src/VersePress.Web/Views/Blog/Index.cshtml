@@ -1,0 +1,104 @@
+@model IEnumerable<BlogPostDto>
+@{
+    ViewData["Title"] = ViewBag.PageTitle ?? "Blog Posts";
+    var filterType = ViewBag.FilterType as string;
+    var filterValue = ViewBag.FilterValue as string;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            @if (!string.IsNullOrEmpty(filterType))
+            {
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-controller="Blog" asp-action="Index">Blog</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">@filterType: @filterValue</li>
+                    </ol>
+                </nav>
+            }
+            
+            <h1 class="display-4 mb-4">@ViewData["Title"]</h1>
+            
+            @if (!string.IsNullOrEmpty(filterValue))
+            {
+                <p class="lead text-muted mb-4">
+                    Showing posts for @filterType.ToLower(): <strong>@filterValue</strong>
+                </p>
+            }
+        </div>
+    </div>
+    
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var post in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm hover-shadow">
+                        @if (!string.IsNullOrEmpty(post.FeaturedImageUrl))
+                        {
+                            <img src="@post.FeaturedImageUrl" class="card-img-top" alt="@post.TitleEn" loading="lazy" />
+                        }
+                        <div class="card-body">
+                            @if (post.IsFeatured)
+                            {
+                                <span class="badge bg-warning text-dark mb-2">Featured</span>
+                            }
+                            <h5 class="card-title">
+                                <a asp-controller="Blog" asp-action="Details" asp-route-slug="@post.Slug" class="text-decoration-none">
+                                    @(System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar") ? post.TitleAr : post.TitleEn)
+                                </a>
+                            </h5>
+                            <p class="card-text text-muted">
+                                @(System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar") ? 
+                                    (post.ExcerptAr?.Length > 150 ? post.ExcerptAr.Substring(0, 150) + "..." : post.ExcerptAr) : 
+                                    (post.ExcerptEn?.Length > 150 ? post.ExcerptEn.Substring(0, 150) + "..." : post.ExcerptEn))
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>@post.PublishedAt?.ToString("MMM dd, yyyy")
+                                <i class="bi bi-eye ms-3 me-1"></i>@post.ViewCount
+                                <i class="bi bi-chat ms-3 me-1"></i>@post.CommentCount
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    No posts found. Check back later!
+                </div>
+            </div>
+        }
+    </div>
+    
+    @if (ViewBag.TotalPages > 1)
+    {
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="?page=@i">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+</div>
+
+<style>
+    .hover-shadow {
+        transition: box-shadow 0.3s ease;
+    }
+    .hover-shadow:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+</style>

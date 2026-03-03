@@ -1,0 +1,81 @@
+@model SearchResultsViewModel
+@{
+    ViewData["Title"] = $"Search Results for '{Model.Query}'";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-5 mb-3">Search Results</h1>
+            <p class="lead">
+                Found <strong>@Model.TotalResults</strong> result(s) for "<strong>@Model.Query</strong>"
+            </p>
+            
+            <form asp-controller="Blog" asp-action="Search" method="get" class="mb-4">
+                <div class="input-group input-group-lg">
+                    <input type="text" name="q" class="form-control" placeholder="Search posts..." value="@Model.Query" />
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row">
+        @if (Model.Results != null && Model.Results.Any())
+        {
+            @foreach (var post in Model.Results)
+            {
+                <div class="col-12 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a asp-controller="Blog" asp-action="Details" asp-route-slug="@post.Slug" class="text-decoration-none">
+                                    @(System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar") ? post.TitleAr : post.TitleEn)
+                                </a>
+                            </h3>
+                            <p class="card-text">
+                                @(System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar") ? post.ExcerptAr : post.ExcerptEn)
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar me-1"></i>@post.PublishedAt?.ToString("MMM dd, yyyy")
+                                    <i class="bi bi-eye ms-3 me-1"></i>@post.ViewCount views
+                                    <i class="bi bi-chat ms-3 me-1"></i>@post.CommentCount comments
+                                </small>
+                                <a asp-controller="Blog" asp-action="Details" asp-route-slug="@post.Slug" class="btn btn-sm btn-outline-primary">
+                                    Read More <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+            @if (Model.TotalPages > 1)
+            {
+                <nav aria-label="Search results pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="?q=@Model.Query&page=@i">@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-warning text-center" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>No results found</strong>
+                    <p class="mb-0 mt-2">Try different keywords or browse our <a asp-controller="Home" asp-action="Index">latest posts</a>.</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
