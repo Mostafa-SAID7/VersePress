@@ -27,7 +27,6 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\scopedcss\bundle\VersePress.Web.styles.css
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\scopedcss\projectbundle\VersePress.Web.bundle.scp.css
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\6o4bcut4hp-61n19gt1b8.gz
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\orhxuwzr3s-xtxxf3hu2r.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\qgz444ou4x-c2jlpeoesf.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\eugfjruuv4-aexeepp0ev.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\hubd8asd1i-ausgxo2sd3.gz
@@ -243,10 +242,11 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\ar-SA\VersePress.Web.resources.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\en-US\VersePress.Web.resources.cs
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\en-US\VersePress.Web.resources.dll
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-utqyseu6j9.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\WebOptimizer.Core.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\NUglify.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\Serilog.Enrichers.Environment.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\Serilog.Enrichers.Thread.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-mrdqal5rf5.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\orhxuwzr3s-2877lmq2fx.gz

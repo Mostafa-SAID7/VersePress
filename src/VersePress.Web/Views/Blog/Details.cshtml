@@ -66,10 +66,10 @@
     @* Reactions *@
     <div class="post-reactions mb-4">
         <h5>Reactions</h5>
-        <div class="reaction-buttons">
+        <div class="reaction-buttons d-flex flex-wrap gap-2">
             @foreach (var reaction in Model.ReactionCounts)
             {
-                <button class="btn btn-outline-primary me-2 reaction-btn" 
+                <button class="btn btn-outline-primary reaction-btn touch-target" 
                         data-reaction="@reaction.Key" 
                         data-post-id="@Model.Post.Id"
                         data-active="@(Model.UserReaction == reaction.Key.ToString())">
@@ -82,18 +82,18 @@
     @* Share buttons *@
     <div class="post-share mb-5">
         <h5>Share this post</h5>
-        <div class="share-buttons">
-            <button class="btn btn-outline-primary me-2 share-btn" data-platform="Twitter" data-post-id="@Model.Post.Id">
-                <i class="bi bi-twitter"></i> Twitter
+        <div class="share-buttons d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-primary share-btn touch-target" data-platform="Twitter" data-post-id="@Model.Post.Id">
+                <i class="bi bi-twitter"></i> <span class="d-none d-sm-inline">Twitter</span>
             </button>
-            <button class="btn btn-outline-primary me-2 share-btn" data-platform="Facebook" data-post-id="@Model.Post.Id">
-                <i class="bi bi-facebook"></i> Facebook
+            <button class="btn btn-outline-primary share-btn touch-target" data-platform="Facebook" data-post-id="@Model.Post.Id">
+                <i class="bi bi-facebook"></i> <span class="d-none d-sm-inline">Facebook</span>
             </button>
-            <button class="btn btn-outline-primary me-2 share-btn" data-platform="LinkedIn" data-post-id="@Model.Post.Id">
-                <i class="bi bi-linkedin"></i> LinkedIn
+            <button class="btn btn-outline-primary share-btn touch-target" data-platform="LinkedIn" data-post-id="@Model.Post.Id">
+                <i class="bi bi-linkedin"></i> <span class="d-none d-sm-inline">LinkedIn</span>
             </button>
-            <button class="btn btn-outline-primary me-2 share-btn" data-platform="WhatsApp" data-post-id="@Model.Post.Id">
-                <i class="bi bi-whatsapp"></i> WhatsApp
+            <button class="btn btn-outline-primary share-btn touch-target" data-platform="WhatsApp" data-post-id="@Model.Post.Id">
+                <i class="bi bi-whatsapp"></i> <span class="d-none d-sm-inline">WhatsApp</span>
             </button>
         </div>
     </div>
@@ -110,13 +110,13 @@
                     <div class="mb-3">
                         <textarea class="form-control" id="commentContent" rows="3" placeholder="Write your comment..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    <button type="submit" class="btn btn-primary touch-target">Submit Comment</button>
                 </form>
             </div>
         }
         else
         {
-            <p class="alert alert-info">Please <a href="@Url.Action("Login", "Account")">log in</a> to leave a comment.</p>
+            <p class="alert alert-info">Please <a href="@Url.Action("Login", "Account")" class="touch-target">log in</a> to leave a comment.</p>
         }
 
         <div id="commentsList" class="comments-list mt-4">
@@ -132,20 +132,20 @@
 @if (Model.PreviousInSeries != null || Model.NextInSeries != null)
 {
     <nav class="series-navigation mt-5">
-        <div class="row">
+        <div class="row g-2">
             @if (Model.PreviousInSeries != null)
             {
-                <div class="col-md-6">
-                    <a href="@Url.Action("Details", "Blog", new { slug = Model.PreviousInSeries.Slug })" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left"></i> Previous: @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.PreviousInSeries.TitleAr : Model.PreviousInSeries.TitleEn)
+                <div class="col-12 col-md-6 mb-2 mb-md-0">
+                    <a href="@Url.Action("Details", "Blog", new { slug = Model.PreviousInSeries.Slug })" class="btn btn-outline-secondary w-100 touch-target">
+                        <i class="bi bi-arrow-left"></i> <span class="d-none d-sm-inline">Previous:</span> @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.PreviousInSeries.TitleAr : Model.PreviousInSeries.TitleEn)
                     </a>
                 </div>
             }
             @if (Model.NextInSeries != null)
             {
-                <div class="col-md-6 text-end">
-                    <a href="@Url.Action("Details", "Blog", new { slug = Model.NextInSeries.Slug })" class="btn btn-outline-secondary">
-                        Next: @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.NextInSeries.TitleAr : Model.NextInSeries.TitleEn) <i class="bi bi-arrow-right"></i>
+                <div class="col-12 col-md-6">
+                    <a href="@Url.Action("Details", "Blog", new { slug = Model.NextInSeries.Slug })" class="btn btn-outline-secondary w-100 touch-target text-md-end">
+                        <span class="d-none d-sm-inline">Next:</span> @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.NextInSeries.TitleAr : Model.NextInSeries.TitleEn) <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
             }
@@ -158,11 +158,11 @@
 {
     <section class="related-posts mt-5">
         <h3>Related Posts</h3>
-        <div class="row">
+        <div class="row g-3">
             @foreach (var relatedPost in Model.RelatedPosts.Take(3))
             {
-                <div class="col-md-4">
-                    <div class="card">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
                         @if (!string.IsNullOrEmpty(relatedPost.FeaturedImageUrl))
                         {
                             <img src="@relatedPost.FeaturedImageUrl" 
@@ -170,10 +170,10 @@
                                  alt="@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)" 
                                  loading="lazy" />
                         }
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)</h5>
-                            <p class="card-text">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.ExcerptAr : relatedPost.ExcerptEn)</p>
-                            <a href="@Url.Action("Details", "Blog", new { slug = relatedPost.Slug })" class="btn btn-primary">Read More</a>
+                            <p class="card-text flex-grow-1">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.ExcerptAr : relatedPost.ExcerptEn)</p>
+                            <a href="@Url.Action("Details", "Blog", new { slug = relatedPost.Slug })" class="btn btn-primary touch-target mt-auto">Read More</a>
                         </div>
                     </div>
                 </div>

@@ -409,21 +409,21 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Return HTTP 503 with failure details when any check fails
     - _Requirements: 20.1, 20.4, 20.5_
 
-- [ ] 17. Implement responsive design with Bootstrap 5
-  - [ ] 17.1 Create responsive layout
+- [x] 17. Implement responsive design with Bootstrap 5
+  - [x] 17.1 Create responsive layout
     - Create _Layout.cshtml with Bootstrap 5 grid system
     - Implement responsive navigation with mobile hamburger menu
     - Ensure all interactive elements are touch-friendly (min 44x44px)
     - _Requirements: 16.1, 16.5_
   
-  - [ ] 17.2 Implement responsive breakpoints
+  - [x] 17.2 Implement responsive breakpoints
     - Mobile layout for width < 768px
     - Tablet layout for width 768px - 1024px
     - Desktop layout for width > 1024px
     - Test all pages at different breakpoints
     - _Requirements: 16.2, 16.3, 16.4_
   
-  - [ ] 17.3 Optimize for mobile performance
+  - [x] 17.3 Optimize for mobile performance
     - Reduce image sizes for mobile devices
     - Minimize JavaScript execution on mobile
     - Test Lighthouse score on mobile (target ≥ 95)
