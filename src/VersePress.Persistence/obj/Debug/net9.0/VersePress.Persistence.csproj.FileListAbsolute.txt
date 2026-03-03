@@ -1,0 +1,15 @@
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\bin\Debug\net9.0\VersePress.Persistence.deps.json
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\bin\Debug\net9.0\VersePress.Persistence.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\bin\Debug\net9.0\VersePress.Persistence.pdb
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\bin\Debug\net9.0\VersePress.Domain.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\bin\Debug\net9.0\VersePress.Domain.pdb
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.csproj.AssemblyReference.cache
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.AssemblyInfoInputs.cache
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.AssemblyInfo.cs
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePre.8E8A596E.Up2Date
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\refint\VersePress.Persistence.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.pdb
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\ref\VersePress.Persistence.dll
