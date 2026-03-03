@@ -12,8 +12,8 @@ using VersePress.Infrastructure.Data;
 namespace VersePress.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260303225351_UpdateForProduction")]
-    partial class UpdateForProduction
+    [Migration("20260303230318_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
