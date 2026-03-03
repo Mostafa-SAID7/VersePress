@@ -318,19 +318,6 @@ if (app.Environment.IsDevelopment())
     }
 }
 
-// Seed roles method (kept for backward compatibility)
-static async Task SeedRolesAsync(RoleManager<IdentityRole<Guid>> roleManager)
-{
-    string[] roleNames = { "Admin", "Author" };
-    foreach (var roleName in roleNames)
-    {
-        if (!await roleManager.RoleExistsAsync(roleName))
-        {
-            await roleManager.CreateAsync(new IdentityRole<Guid>(roleName));
-        }
-    }
-}
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -356,10 +343,11 @@ app.UseSerilogRequestLogging(options =>
     options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
     options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
     {
-        diagnosticContext.Set("RequestHost", httpContext.Request.Host.Value);
+        diagnosticContext.Set("RequestHost", httpContext.Request.Host.Value ?? "Unknown");
         diagnosticContext.Set("RequestScheme", httpContext.Request.Scheme);
-        diagnosticContext.Set("UserAgent", httpContext.Request.Headers["User-Agent"].ToString());
-        diagnosticContext.Set("RemoteIP", httpContext.Connection.RemoteIpAddress?.ToString());
+        var userAgent = httpContext.Request.Headers.UserAgent.ToString();
+        diagnosticContext.Set("UserAgent", string.IsNullOrEmpty(userAgent) ? "Unknown" : userAgent);
+        diagnosticContext.Set("RemoteIP", httpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown");
     };
     // Log slow requests (>1000ms) as warnings
     options.GetLevel = (httpContext, elapsed, ex) =>

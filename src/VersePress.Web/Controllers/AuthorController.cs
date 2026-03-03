@@ -20,7 +20,7 @@ public class AuthorController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Dashboard()
+    public IActionResult Dashboard()
     {
         try
         {

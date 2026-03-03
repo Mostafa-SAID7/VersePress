@@ -30,7 +30,7 @@ public class ExceptionHandlingMiddleware
         }
     }
 
-    private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+    private Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         // Log the exception with full stack trace and request context
         _logger.LogError(exception,
@@ -46,6 +46,8 @@ public class ExceptionHandlingMiddleware
 
         // Redirect to custom error page
         context.Response.Redirect("/Home/Error?statusCode=500");
+        
+        return Task.CompletedTask;
     }
 }
 
