@@ -1,0 +1,14 @@
+@model (string Title, string Icon, string ColorClass)
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header @Model.ColorClass text-white">
+        @if (!string.IsNullOrEmpty(Model.Icon))
+        {
+            <i class="bi bi-@Model.Icon me-2"></i>
+        }
+        <h5 class="d-inline-block mb-0">@Model.Title</h5>
+    </div>
+    <div class="card-body">
+        @RenderBody()
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@model (string PrimaryText, string PrimaryAction, string SecondaryText, string SecondaryAction, string Size)
+@{
+    var sizeClass = Model.Size ?? "lg";
+}
+
+<div class="action-buttons d-grid gap-2 d-md-flex justify-content-md-end">
+    @if (!string.IsNullOrEmpty(Model.SecondaryAction))
+    {
+        <a href="@Model.SecondaryAction" class="btn btn-secondary btn-@sizeClass">
+            <i class="bi bi-x-circle me-2"></i>@Model.SecondaryText
+        </a>
+    }
+    @if (!string.IsNullOrEmpty(Model.PrimaryAction))
+    {
+        <button type="submit" class="btn btn-primary btn-@sizeClass" formaction="@Model.PrimaryAction">
+            <i class="bi bi-check-circle me-2"></i>@Model.PrimaryText
+        </button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-primary btn-@sizeClass">
+            <i class="bi bi-check-circle me-2"></i>@Model.PrimaryText
+        </button>
+    }
+</div>
+
+<style>
+    .action-buttons {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #dee2e6;
+    }
+</style>

@@ -1,0 +1,26 @@
+@model (string Type, string Message, string Icon)
+@{
+    var alertClass = Model.Type switch
+    {
+        "success" => "alert-success",
+        "error" => "alert-danger",
+        "warning" => "alert-warning",
+        "info" => "alert-info",
+        _ => "alert-primary"
+    };
+    
+    var icon = Model.Icon ?? Model.Type switch
+    {
+        "success" => "check-circle-fill",
+        "error" => "exclamation-triangle-fill",
+        "warning" => "exclamation-circle-fill",
+        "info" => "info-circle-fill",
+        _ => "info-circle-fill"
+    };
+}
+
+<div class="alert @alertClass alert-dismissible fade show" role="alert">
+    <i class="bi bi-@icon me-2"></i>
+    @Model.Message
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

@@ -1,0 +1,30 @@
+@model List<(string Text, string Link)>
+
+@if (Model != null && Model.Any())
+{
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-house-door me-1"></i>Home
+                </a>
+            </li>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                var isLast = i == Model.Count - 1;
+                
+                if (isLast)
+                {
+                    <li class="breadcrumb-item active" aria-current="page">@item.Text</li>
+                }
+                else
+                {
+                    <li class="breadcrumb-item">
+                        <a href="@item.Link">@item.Text</a>
+                    </li>
+                }
+            }
+        </ol>
+    </nav>
+}
