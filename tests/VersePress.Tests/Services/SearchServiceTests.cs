@@ -116,7 +116,6 @@ public class SearchServiceTests
     {
         // Arrange
         var query = "test'; DROP TABLE BlogPosts; --";
-        var sanitizedQuery = "test DROP TABLE BlogPosts --"; // Expected sanitized version
         var blogPosts = new List<BlogPost>();
 
         _mockBlogPostRepository
