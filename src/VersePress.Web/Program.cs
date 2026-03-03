@@ -33,6 +33,7 @@ builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
 builder.Services.AddScoped<ISeoService, SeoService>();
 builder.Services.AddScoped<IViewCounterService, ViewCounterService>();
+builder.Services.AddScoped<IShareTrackingService, ShareTrackingService>();
 
 var app = builder.Build();
 

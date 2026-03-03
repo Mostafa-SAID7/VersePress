@@ -88,7 +88,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Test cascade delete behaviors
     - _Requirements: 18.1, 26.6_
 
-- [~] 6. Implement Application layer services
+- [x] 6. Implement Application layer services
   - [x] 6.1 Create BlogPostService
     - Implement CreateBlogPostAsync: validate input, generate unique slug, save to repository
     - Implement UpdateBlogPostAsync: validate ownership, update fields, save changes
@@ -141,12 +141,12 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Include bilingual support with hreflang tags
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8_
   
-  - [-] 6.8 Create ViewCounterService
+  - [x] 6.8 Create ViewCounterService
     - Implement IncrementViewCountAsync: check session uniqueness (24-hour window), increment count asynchronously
     - Use distributed cache or database to track viewed posts per session
     - _Requirements: 7.1, 7.2, 7.4, 7.5_
   
-  - [~] 6.9 Create ShareTrackingService
+  - [x] 6.9 Create ShareTrackingService
     - Implement RecordShareAsync: save Share entity with platform and timestamp
     - Implement GetShareCountsAsync: aggregate shares by platform
     - Execute asynchronously without blocking
