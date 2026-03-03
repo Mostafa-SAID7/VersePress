@@ -24,6 +24,7 @@ public class UnitOfWork : IUnitOfWork
     private IRepository<Series>? _series;
     private IRepository<Project>? _projects;
     private IRepository<Share>? _shares;
+    private IRepository<PostView>? _postViews;
 
     /// <summary>
     /// Initializes a new instance of the UnitOfWork class.
@@ -125,6 +126,16 @@ public class UnitOfWork : IUnitOfWork
         {
             _shares ??= new Repository<Share>(_context);
             return _shares;
+        }
+    }
+
+    /// <inheritdoc/>
+    public IRepository<PostView> PostViews
+    {
+        get
+        {
+            _postViews ??= new Repository<PostView>(_context);
+            return _postViews;
         }
     }
 

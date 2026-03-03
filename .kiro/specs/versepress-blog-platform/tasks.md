@@ -97,14 +97,14 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Implement ToggleFeaturedAsync for marking posts as featured
     - _Requirements: 1.2, 1.3, 1.4, 1.5, 1.6, 10.1, 10.3, 10.4, 10.5, 10.6, 10.7, 22.1, 22.2_
   
-  - [~] 6.2 Create CommentService
+  - [x] 6.2 Create CommentService
     - Implement CreateCommentAsync: validate input, save comment with IsApproved=false, trigger notification
     - Implement ApproveCommentAsync: set IsApproved=true, broadcast via SignalR
     - Implement RejectCommentAsync: delete comment from database
     - Implement GetCommentsByPostAsync with nested structure loading
     - _Requirements: 5.1, 5.2, 5.4, 5.5, 5.6, 6.1, 6.2, 6.3, 6.5, 19.2_
   
-  - [~] 6.3 Create ReactionService
+  - [x] 6.3 Create ReactionService
     - Implement AddReactionAsync: check for existing reaction, replace or create new, broadcast update
     - Implement RemoveReactionAsync: delete reaction, broadcast update
     - Implement GetReactionCountsAsync: aggregate reactions by type
@@ -112,27 +112,27 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - _Requirements: 4.1, 4.2, 4.4, 4.5, 4.6, 19.3_
 
 
-  - [~] 6.4 Create NotificationService
+  - [x] 6.4 Create NotificationService
     - Implement CreateNotificationAsync: save notification to database, send via SignalR hub
     - Implement GetUserNotificationsAsync: retrieve notifications with filtering by read status
     - Implement MarkAsReadAsync: update notification read status
     - Implement GetUnreadCountAsync: count unread notifications for user
     - _Requirements: 19.1, 19.2, 19.3, 19.4, 19.5, 19.6_
   
-  - [~] 6.5 Create SearchService
+  - [x] 6.5 Create SearchService
     - Implement SearchPostsAsync: query BlogPost titles and content in both languages, rank by relevance
     - Implement query sanitization to prevent SQL injection
     - Add timeout handling (5 seconds)
     - _Requirements: 14.1, 14.2, 14.6, 21.8_
   
-  - [~] 6.6 Create AnalyticsService
+  - [x] 6.6 Create AnalyticsService
     - Implement GetDashboardStatsAsync: aggregate counts for posts, comments, users, reactions
     - Implement GetTopPostsByViewsAsync, GetTopPostsByReactionsAsync, GetTopPostsByCommentsAsync
     - Implement GetRecentSharesAsync with platform breakdown
     - Implement GetPublicationTrendsAsync for chart data
     - _Requirements: 13.1, 13.3, 13.4, 13.5, 13.6, 13.7_
   
-  - [~] 6.7 Create SeoService
+  - [x] 6.7 Create SeoService
     - Implement GenerateMetaTagsAsync: create title, description, keywords for blog posts
     - Implement GenerateOpenGraphTagsAsync: create OG tags for social sharing
     - Implement GenerateJsonLdAsync: create structured data for search engines
@@ -141,7 +141,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Include bilingual support with hreflang tags
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8_
   
-  - [~] 6.8 Create ViewCounterService
+  - [-] 6.8 Create ViewCounterService
     - Implement IncrementViewCountAsync: check session uniqueness (24-hour window), increment count asynchronously
     - Use distributed cache or database to track viewed posts per session
     - _Requirements: 7.1, 7.2, 7.4, 7.5_

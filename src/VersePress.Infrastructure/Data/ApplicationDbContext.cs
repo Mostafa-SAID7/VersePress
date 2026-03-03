@@ -27,6 +27,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
     public DbSet<Series> Series => Set<Series>();
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<PostView> PostViews => Set<PostView>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -57,6 +58,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
         ConfigureProject(builder);
         ConfigureShare(builder);
         ConfigureNotification(builder);
+        ConfigurePostView(builder);
     }
 
     /// <summary>
@@ -326,6 +328,33 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
             entity.HasOne(e => e.User)
                   .WithMany(u => u.Notifications)
                   .HasForeignKey(e => e.UserId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+    }
+
+    /// <summary>
+    /// Configure PostView entity with composite index for session-based view tracking.
+    /// </summary>
+    private void ConfigurePostView(ModelBuilder builder)
+    {
+        builder.Entity<PostView>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            
+            // Configure composite index for efficient querying by post and session
+            entity.HasIndex(e => new { e.BlogPostId, e.SessionId });
+            entity.HasIndex(e => e.ViewedAt);
+            entity.HasIndex(e => e.IsDeleted);
+            
+            // Configure properties
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.Property(e => e.SessionId).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.ViewedAt).IsRequired();
+            
+            // Relationship to BlogPost
+            entity.HasOne(e => e.BlogPost)
+                  .WithMany()
+                  .HasForeignKey(e => e.BlogPostId)
                   .OnDelete(DeleteBehavior.Cascade);
         });
     }

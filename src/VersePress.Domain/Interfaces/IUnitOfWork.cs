@@ -54,6 +54,11 @@ public interface IUnitOfWork : IDisposable
     IRepository<Share> Shares { get; }
 
     /// <summary>
+    /// Generic repository for PostView entities.
+    /// </summary>
+    IRepository<PostView> PostViews { get; }
+
+    /// <summary>
     /// Saves all pending changes to the database as a single atomic operation.
     /// </summary>
     /// <param name="cancellationToken">Cancellation token for async operation</param>
