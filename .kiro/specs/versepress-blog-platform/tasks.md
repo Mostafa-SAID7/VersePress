@@ -429,20 +429,20 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - Test Lighthouse score on mobile (target ≥ 95)
     - _Requirements: 12.1, 16.6_
 
-- [ ] 18. Implement animations and visual feedback
-  - [ ] 18.1 Integrate Lottie animations
+- [x] 18. Implement animations and visual feedback
+  - [x] 18.1 Integrate Lottie animations
     - Add Lottie library
     - Create loading animation component for async operations
     - Display loading animation during comment submission, reaction updates
     - _Requirements: 25.1, 25.4_
   
-  - [ ] 18.2 Integrate Lordicon animations
+  - [x] 18.2 Integrate Lordicon animations
     - Add Lordicon library
     - Use animated icons for reactions, notifications, theme toggle
     - Animate reaction button on click
     - _Requirements: 25.2, 25.3_
   
-  - [ ] 18.3 Implement accessibility for animations
+  - [x] 18.3 Implement accessibility for animations
     - Respect prefers-reduced-motion media query
     - Disable animations when user prefers reduced motion
     - _Requirements: 25.6_
