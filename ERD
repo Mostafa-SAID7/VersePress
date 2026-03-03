@@ -1,0 +1,53 @@
+BlogPost
+
+Id (Guid)
+Slug (unique)
+TitleEn
+TitleAr
+ContentEn
+ContentAr
+ExcerptEn
+ExcerptAr
+FeaturedImageUrl
+ViewCount
+IsFeatured
+PublishedAt
+AuthorId
+
+Comment
+
+Id
+BlogPostId
+UserId
+Content
+ParentCommentId (nullable)
+CreatedAt
+IsApproved
+
+Reaction
+
+Id
+BlogPostId
+UserId
+ReactionType (Like, Love, Clap, Fire)
+CreatedAt
+
+Share
+
+Id
+BlogPostId
+Platform
+SharedAt
+
+Tag
+Category
+PostTag
+PostCategory
+
+Implement full EF Core fluent configurations.
+
+Use indexes for:
+
+Slug
+PublishedAt
+BlogPostId foreign keys

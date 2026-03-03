@@ -34,6 +34,10 @@ tests/
         Enums
         Repository Interfaces
 🔹 Application Layer
+        DTOs
+        Interfaces for services
+        Business logic
+        Validation logic
         Implements SOLID principles.
         Service Interface
         Service Implementation
@@ -41,6 +45,19 @@ tests/
         ✔ Dependency Inversion
         ✔ Easily testable
 🔹 Infrastructure Layer (EF Core)
+        Repository implementations
+        External services
+        Logging
+        DbContext
+        Fluent configurations
+        Migrations
+        Seeds
+🔹Web layer
+        MVC Controllers
+        Razor Views
+        SignalR Hubs
+        Middleware
+        UI logic
 + Multi-language (EN / AR) with RTL Use ASP.NET Core Localization
         ✔ Automatic RTL support
         ✔ Culture-based content switching
@@ -140,6 +157,28 @@ SQL injection safe (EF Core)
 Output encoding in Razor
 SignalR authentication
 
+AUTHENTICATION
+Registration
+
+Login
+Role management
+Author dashboard
+Admin moderation dashboard
+
+Manage posts
+Approve comments
+Manage tags/categories
+View analytics dashboard
+Moderate reactions
+Manage users
+
+ANALYTICS
+Post views
+Most liked posts
+Most commented posts
+Trending algorithm
+Share statistics
+
 Enterprise Enhancements
 
 ✔ FluentValidation for input validation
@@ -158,7 +197,12 @@ Server-side rendering (MVC native)
 Response compression enabled
 EF Core optimized queries (AsNoTracking)
 Static file caching
-Lighthouse 95+
+Use AsNoTracking for read queries
+Use Output Caching
+Add IMemoryCache for popular posts
+Enable static file caching
+Use pagination
+Lighthouse score target ≥ 95
 
 🏁 Final Positioning
 MVC Clean Architecture
@@ -184,3 +228,41 @@ Animation-enhanced
 Performance-focused
 Real-Time
 Notifications
+
+
+REQUIRED OUTPUT
+
+Full Solution structure
+All projects and references
+Complete DbContext
+Fluent configurations
+Controllers
+Razor Views
+SignalR Hub
+Services & Repositories
+CSS files
+Localization resources
+Program.cs
+appsettings.json (Dev + Prod)
+GitHub Actions YAML
+README documentation
+Sample seed data
+Migrations
+Identity integration
+Admin Area
+Dashboard
+Unit test project
+
+QUALITY REQUIREMENTS
+
+Clean code
+
+No duplicated logic
+Proper separation of concerns
+Dependency injection used everywhere
+No business logic in controllers
+Async/await everywhere
+Production-level error handling
+Logging with Serilog
+Health checks endpoint
+Scalable architecture
