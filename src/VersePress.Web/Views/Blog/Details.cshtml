@@ -1,0 +1,280 @@
+@model VersePress.Web.Models.BlogPostDetailViewModel
+@using System.Globalization
+@inject VersePress.Application.Interfaces.ISeoService SeoService
+
+@{
+    ViewData["Title"] = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.Post.TitleAr : Model.Post.TitleEn;
+    var currentLanguage = CultureInfo.CurrentCulture.Name;
+    var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}";
+    
+    // Generate SEO data
+    var metaTags = await SeoService.GenerateMetaTagsAsync(Model.Post.Id, currentLanguage, baseUrl);
+    var openGraph = await SeoService.GenerateOpenGraphTagsAsync(Model.Post.Id, currentLanguage, baseUrl);
+    var jsonLd = await SeoService.GenerateJsonLdAsync(Model.Post.Id, currentLanguage, baseUrl);
+}
+
+@section Head {
+    @* Include SEO partial views *@
+    <partial name="_MetaTags" model="metaTags" />
+    <partial name="_OpenGraph" model="openGraph" />
+    <partial name="_JsonLd" model="jsonLd" />
+}
+
+<article class="blog-post">
+    <header class="blog-post-header mb-4">
+        <h1 class="display-4">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.Post.TitleAr : Model.Post.TitleEn)</h1>
+        
+        <div class="post-meta text-muted mb-3">
+            <span class="author">
+                <i class="bi bi-person"></i>
+                @Model.Post.AuthorName
+            </span>
+            <span class="date ms-3">
+                <i class="bi bi-calendar"></i>
+                @Model.Post.PublishedAt?.ToString("MMMM dd, yyyy")
+            </span>
+            <span class="views ms-3">
+                <i class="bi bi-eye"></i>
+                @Model.Post.ViewCount views
+            </span>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Post.FeaturedImageUrl))
+        {
+            <img src="@Model.Post.FeaturedImageUrl" alt="@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.Post.TitleAr : Model.Post.TitleEn)" class="img-fluid rounded mb-4" />
+        }
+    </header>
+
+    <div class="blog-post-content mb-5">
+        @Html.Raw(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.Post.ContentAr : Model.Post.ContentEn)
+    </div>
+
+    @* Tags *@
+    @if (Model.Post.Tags != null && Model.Post.Tags.Any())
+    {
+        <div class="post-tags mb-4">
+            <i class="bi bi-tags"></i>
+            @foreach (var tag in Model.Post.Tags)
+            {
+                <a href="@Url.Action("ByTag", "Blog", new { slug = tag.Slug })" class="badge bg-secondary me-2">
+                    @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? tag.NameAr : tag.NameEn)
+                </a>
+            }
+        </div>
+    }
+
+    @* Reactions *@
+    <div class="post-reactions mb-4">
+        <h5>Reactions</h5>
+        <div class="reaction-buttons">
+            @foreach (var reaction in Model.ReactionCounts)
+            {
+                <button class="btn btn-outline-primary me-2 reaction-btn" 
+                        data-reaction="@reaction.Key" 
+                        data-post-id="@Model.Post.Id"
+                        data-active="@(Model.UserReaction == reaction.Key.ToString())">
+                    @reaction.Key <span class="badge bg-primary">@reaction.Value</span>
+                </button>
+            }
+        </div>
+    </div>
+
+    @* Share buttons *@
+    <div class="post-share mb-5">
+        <h5>Share this post</h5>
+        <div class="share-buttons">
+            <button class="btn btn-outline-primary me-2 share-btn" data-platform="Twitter" data-post-id="@Model.Post.Id">
+                <i class="bi bi-twitter"></i> Twitter
+            </button>
+            <button class="btn btn-outline-primary me-2 share-btn" data-platform="Facebook" data-post-id="@Model.Post.Id">
+                <i class="bi bi-facebook"></i> Facebook
+            </button>
+            <button class="btn btn-outline-primary me-2 share-btn" data-platform="LinkedIn" data-post-id="@Model.Post.Id">
+                <i class="bi bi-linkedin"></i> LinkedIn
+            </button>
+            <button class="btn btn-outline-primary me-2 share-btn" data-platform="WhatsApp" data-post-id="@Model.Post.Id">
+                <i class="bi bi-whatsapp"></i> WhatsApp
+            </button>
+        </div>
+    </div>
+
+    @* Comments section *@
+    <div class="post-comments">
+        <h3>Comments (@Model.Comments.Count)</h3>
+        
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <div class="comment-form mb-4">
+                <h5>Leave a comment</h5>
+                <form id="commentForm" data-post-id="@Model.Post.Id">
+                    <div class="mb-3">
+                        <textarea class="form-control" id="commentContent" rows="3" placeholder="Write your comment..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <p class="alert alert-info">Please <a href="@Url.Action("Login", "Account")">log in</a> to leave a comment.</p>
+        }
+
+        <div id="commentsList" class="comments-list mt-4">
+            @foreach (var comment in Model.Comments.Where(c => c.ParentCommentId == null))
+            {
+                <partial name="_Comment" model="comment" />
+            }
+        </div>
+    </div>
+</article>
+
+@* Series navigation *@
+@if (Model.PreviousInSeries != null || Model.NextInSeries != null)
+{
+    <nav class="series-navigation mt-5">
+        <div class="row">
+            @if (Model.PreviousInSeries != null)
+            {
+                <div class="col-md-6">
+                    <a href="@Url.Action("Details", "Blog", new { slug = Model.PreviousInSeries.Slug })" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Previous: @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.PreviousInSeries.TitleAr : Model.PreviousInSeries.TitleEn)
+                    </a>
+                </div>
+            }
+            @if (Model.NextInSeries != null)
+            {
+                <div class="col-md-6 text-end">
+                    <a href="@Url.Action("Details", "Blog", new { slug = Model.NextInSeries.Slug })" class="btn btn-outline-secondary">
+                        Next: @(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.NextInSeries.TitleAr : Model.NextInSeries.TitleEn) <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            }
+        </div>
+    </nav>
+}
+
+@* Related posts *@
+@if (Model.RelatedPosts != null && Model.RelatedPosts.Any())
+{
+    <section class="related-posts mt-5">
+        <h3>Related Posts</h3>
+        <div class="row">
+            @foreach (var relatedPost in Model.RelatedPosts.Take(3))
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(relatedPost.FeaturedImageUrl))
+                        {
+                            <img src="@relatedPost.FeaturedImageUrl" class="card-img-top" alt="@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)" />
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)</h5>
+                            <p class="card-text">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.ExcerptAr : relatedPost.ExcerptEn)</p>
+                            <a href="@Url.Action("Details", "Blog", new { slug = relatedPost.Slug })" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}
+
+@section Scripts {
+    <script>
+        // Comment submission
+        document.getElementById('commentForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const content = document.getElementById('commentContent').value;
+            const postId = e.target.dataset.postId;
+            
+            try {
+                const response = await fetch('/api/comments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ blogPostId: postId, content: content })
+                });
+                
+                if (response.ok) {
+                    alert('Comment submitted for approval');
+                    document.getElementById('commentContent').value = '';
+                } else {
+                    alert('Error submitting comment');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting comment');
+            }
+        });
+
+        // Reaction buttons
+        document.querySelectorAll('.reaction-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const reaction = btn.dataset.reaction;
+                const postId = btn.dataset.postId;
+                
+                try {
+                    const response = await fetch('/api/reactions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ blogPostId: postId, reactionType: reaction })
+                    });
+                    
+                    if (response.ok) {
+                        location.reload(); // Reload to show updated counts
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        // Share buttons
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const platform = btn.dataset.platform;
+                const postId = btn.dataset.postId;
+                
+                // Record share event
+                try {
+                    await fetch('/api/shares', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ blogPostId: postId, platform: platform })
+                    });
+                } catch (error) {
+                    console.error('Error recording share:', error);
+                }
+                
+                // Open share window
+                const url = window.location.href;
+                const title = document.title;
+                let shareUrl = '';
+                
+                switch(platform) {
+                    case 'Twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+                        break;
+                    case 'Facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                        break;
+                    case 'LinkedIn':
+                        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                        break;
+                    case 'WhatsApp':
+                        shareUrl = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
+                        break;
+                }
+                
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+    </script>
+}

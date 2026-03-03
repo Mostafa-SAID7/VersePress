@@ -6,11 +6,15 @@ using VersePress.Domain.Entities;
 using VersePress.Domain.Interfaces;
 using VersePress.Infrastructure.Data;
 using VersePress.Infrastructure.Repositories;
+using VersePress.Web.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add output caching for SEO endpoints
+builder.Services.AddOutputCache();
 
 // Add memory cache for view counting
 builder.Services.AddMemoryCache();
@@ -30,6 +34,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         sqlOptions => sqlOptions.MigrationsAssembly("VersePress.Infrastructure")
     )
 );
+
+// Configure localization
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[] { "en-US", "ar-SA" };
+    options.SetDefaultCulture("en-US")
+        .AddSupportedCultures(supportedCultures)
+        .AddSupportedUICultures(supportedCultures);
+    
+    options.RequestCultureProviders.Insert(0, new Microsoft.AspNetCore.Localization.CookieRequestCultureProvider());
+});
 
 // Configure ASP.NET Core Identity
 builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
@@ -152,6 +168,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+// Enable output caching
+app.UseOutputCache();
+
+// Enable theme middleware
+app.UseTheme();
+
+// Enable localization
+app.UseRequestLocalization();
 
 // Enable CORS for SignalR
 app.UseCors("SignalRCorsPolicy");

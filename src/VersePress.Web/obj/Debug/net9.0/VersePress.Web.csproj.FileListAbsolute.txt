@@ -26,7 +26,6 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\scopedcss\bundle\VersePress.Web.styles.css
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\scopedcss\projectbundle\VersePress.Web.bundle.scp.css
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-b9sayid5wm.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\6o4bcut4hp-61n19gt1b8.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\orhxuwzr3s-xtxxf3hu2r.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\qgz444ou4x-c2jlpeoesf.gz
@@ -235,3 +234,13 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\ar-SA\VersePress.Web.resources.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\en-US\VersePress.Web.resources.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.Resources.SharedResources.ar-SA.resources
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.Resources.SharedResources.en-US.resources
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.csproj.GenerateResource.cache
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\ar-SA\VersePress.Web.resources.cs
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\ar-SA\VersePress.Web.resources.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\en-US\VersePress.Web.resources.cs
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\en-US\VersePress.Web.resources.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-utqyseu6j9.gz

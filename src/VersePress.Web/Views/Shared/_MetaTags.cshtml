@@ -1,0 +1,27 @@
+@model VersePress.Application.DTOs.MetaTagsDto
+
+@if (Model != null)
+{
+    <title>@Model.Title - VersePress</title>
+    <meta name="description" content="@Model.Description" />
+    
+    @if (!string.IsNullOrEmpty(Model.Keywords))
+    {
+        <meta name="keywords" content="@Model.Keywords" />
+    }
+    
+    <link rel="canonical" href="@Model.CanonicalUrl" />
+    
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <meta name="image" content="@Model.ImageUrl" />
+    }
+    
+    @* Hreflang tags for bilingual content *@
+    @if (!string.IsNullOrEmpty(Model.AlternateUrl))
+    {
+        <link rel="alternate" hreflang="@Model.Language" href="@Model.CanonicalUrl" />
+        <link rel="alternate" hreflang="@Model.AlternateLanguage" href="@Model.AlternateUrl" />
+        <link rel="alternate" hreflang="x-default" href="@Model.CanonicalUrl" />
+    }
+}

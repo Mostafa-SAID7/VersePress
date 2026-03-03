@@ -1,0 +1,29 @@
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var currentCulture = requestCultureFeature?.RequestCulture.Culture.Name ?? "en-US";
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+<div class="language-switcher">
+    <form asp-controller="Language" asp-action="SetLanguage" method="post" class="d-inline">
+        <input type="hidden" name="returnUrl" value="@returnUrl" />
+        @if (currentCulture == "en-US")
+        {
+            <button type="submit" name="culture" value="ar-SA" class="btn btn-sm btn-outline-secondary" title="Switch to Arabic">
+                <span class="me-1">🇸🇦</span>
+                <span>العربية</span>
+            </button>
+        }
+        else
+        {
+            <button type="submit" name="culture" value="en-US" class="btn btn-sm btn-outline-secondary" title="Switch to English">
+                <span class="me-1">🇺🇸</span>
+                <span>English</span>
+            </button>
+        }
+    </form>
+</div>

@@ -1,0 +1,21 @@
+@model VersePress.Application.DTOs.CommentDto
+
+<div class="comment mb-3 p-3 border rounded" id="comment-@Model.Id">
+    <div class="comment-header d-flex justify-content-between mb-2">
+        <strong>@Model.UserName</strong>
+        <small class="text-muted">@Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</small>
+    </div>
+    <div class="comment-content">
+        @Model.Content
+    </div>
+    
+    @if (Model.Replies != null && Model.Replies.Any())
+    {
+        <div class="comment-replies ms-4 mt-3">
+            @foreach (var reply in Model.Replies)
+            {
+                <partial name="_Comment" model="reply" />
+            }
+        </div>
+    }
+</div>

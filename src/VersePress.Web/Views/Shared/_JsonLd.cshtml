@@ -1,0 +1,42 @@
+@model VersePress.Application.DTOs.JsonLdDto
+@using System.Text.Json
+
+@if (Model != null)
+{
+    var jsonLd = new
+    {
+        context = Model.Context,
+        type = Model.Type,
+        headline = Model.Headline,
+        description = Model.Description,
+        image = Model.Image,
+        datePublished = Model.DatePublished?.ToString("o"),
+        dateModified = Model.DateModified?.ToString("o"),
+        author = new
+        {
+            type = Model.Author?.Type,
+            name = Model.Author?.Name
+        },
+        publisher = new
+        {
+            type = Model.Publisher?.Type,
+            name = Model.Publisher?.Name,
+            logo = new
+            {
+                type = Model.Publisher?.Logo?.Type,
+                url = Model.Publisher?.Logo?.Url
+            }
+        },
+        mainEntityOfPage = Model.MainEntityOfPage
+    };
+
+    var jsonString = JsonSerializer.Serialize(jsonLd, new JsonSerializerOptions 
+    { 
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    });
+
+    <script type="application/ld+json">
+        @Html.Raw(jsonString)
+    </script>
+}

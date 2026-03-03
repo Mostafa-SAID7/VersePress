@@ -8,6 +8,143 @@ html {
   }
 }
 
+/* Theme CSS Variables */
+:root {
+  /* Light theme colors (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --link-color: #0d6efd;
+  --link-hover-color: #0a58ca;
+  --navbar-bg: #ffffff;
+  --footer-bg: #f8f9fa;
+  --footer-text: #6c757d;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+  --link-color: #6ea8fe;
+  --link-hover-color: #9ec5fe;
+  --navbar-bg: #212529;
+  --footer-bg: #212529;
+  --footer-text: #adb5bd;
+  --card-bg: #2d2d2d;
+  --input-bg: #2d2d2d;
+  --input-border: #495057;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  border-bottom-color: var(--border-color) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar .nav-link {
+  color: var(--text-primary) !important;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--link-hover-color) !important;
+}
+
+.navbar-brand {
+  color: var(--text-primary) !important;
+  transition: color 0.3s ease;
+}
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  border-top-color: var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--link-hover-color);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control, .form-select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--input-bg);
+  border-color: var(--link-color);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+.text-muted {
+  color: var(--text-secondary) !important;
+}
+
+.border-top, .border-bottom {
+  border-color: var(--border-color) !important;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem var(--shadow-color);
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+  margin-right: 0.5rem;
+}
+
+.theme-toggle .btn {
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -28,4 +165,67 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+/* RTL Support */
+body.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+body.rtl .navbar-nav {
+  flex-direction: row-reverse;
+}
+
+body.rtl .navbar-collapse {
+  justify-content: flex-start;
+}
+
+body.rtl .language-switcher {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body.rtl .me-1 {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+body.rtl .ms-1 {
+  margin-left: 0 !important;
+  margin-right: 0.25rem !important;
+}
+
+/* Smooth transitions for language switching */
+body {
+  transition: direction 0.3s ease;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Language switcher styling */
+.language-switcher {
+  display: inline-block;
+}
+
+.language-switcher .btn {
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.language-switcher .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
