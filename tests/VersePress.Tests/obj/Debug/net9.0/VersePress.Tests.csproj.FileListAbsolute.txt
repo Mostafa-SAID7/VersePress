@@ -164,3 +164,4 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\bin\Debug\
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\bin\Debug\net9.0\VersePress.Application.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\bin\Debug\net9.0\VersePress.Domain.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\bin\Debug\net9.0\VersePress.Infrastructure.pdb
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.InMemory.dll

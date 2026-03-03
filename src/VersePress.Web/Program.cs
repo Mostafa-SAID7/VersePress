@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VersePress.Application.Interfaces;
 using VersePress.Application.Services;
+using VersePress.Domain.Entities;
 using VersePress.Domain.Interfaces;
 using VersePress.Infrastructure.Data;
 using VersePress.Infrastructure.Repositories;
@@ -28,6 +30,50 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         sqlOptions => sqlOptions.MigrationsAssembly("VersePress.Infrastructure")
     )
 );
+
+// Configure ASP.NET Core Identity
+builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
+{
+    // Password settings
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequiredUniqueChars = 1;
+
+    // Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    // User settings
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = false; // Set to true in production with email service
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
+// Configure cookie settings
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromDays(7);
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.SlidingExpiration = true;
+});
+
+// Configure authorization policies
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AuthorPolicy", policy =>
+        policy.RequireRole("Author", "Admin"));
+    
+    options.AddPolicy("AdminPolicy", policy =>
+        policy.RequireRole("Admin"));
+});
 
 // Register Unit of Work and Repositories
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -70,11 +116,28 @@ if (app.Environment.IsDevelopment())
         {
             var context = services.GetRequiredService<ApplicationDbContext>();
             await context.Database.MigrateAsync();
+
+            // Seed roles
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+            await SeedRolesAsync(roleManager);
         }
         catch (Exception ex)
         {
             var logger = services.GetRequiredService<ILogger<Program>>();
             logger.LogError(ex, "An error occurred while migrating the database.");
+        }
+    }
+}
+
+// Seed roles method
+static async Task SeedRolesAsync(RoleManager<IdentityRole<Guid>> roleManager)
+{
+    string[] roleNames = { "Admin", "Author" };
+    foreach (var roleName in roleNames)
+    {
+        if (!await roleManager.RoleExistsAsync(roleName))
+        {
+            await roleManager.CreateAsync(new IdentityRole<Guid>(roleName));
         }
     }
 }
@@ -93,6 +156,8 @@ app.UseRouting();
 // Enable CORS for SignalR
 app.UseCors("SignalRCorsPolicy");
 
+// Enable authentication and authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
