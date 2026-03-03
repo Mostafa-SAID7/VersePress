@@ -213,6 +213,19 @@ builder.Services.AddAuthorization(options =>
 // Register Unit of Work and Repositories
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+// Configure application settings
+builder.Services.Configure<VersePress.Web.Configuration.EmailSettings>(
+    builder.Configuration.GetSection("EmailSettings"));
+builder.Services.Configure<VersePress.Web.Configuration.ApplicationSettings>(
+    builder.Configuration.GetSection("Application"));
+builder.Services.Configure<VersePress.Web.Configuration.CachingSettings>(
+    builder.Configuration.GetSection("Caching"));
+builder.Services.Configure<VersePress.Web.Configuration.RateLimitingSettings>(
+    builder.Configuration.GetSection("RateLimiting"));
+
+// Register configuration validator
+builder.Services.AddSingleton<VersePress.Web.Configuration.ConfigurationValidator>();
+
 // Register Application Services
 builder.Services.AddScoped<IBlogPostService, BlogPostService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
@@ -223,6 +236,11 @@ builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
 builder.Services.AddScoped<ISeoService, SeoService>();
 builder.Services.AddScoped<IViewCounterService, ViewCounterService>();
 builder.Services.AddScoped<IShareTrackingService, ShareTrackingService>();
+builder.Services.AddScoped<VersePress.Application.Interfaces.IEmailService, VersePress.Infrastructure.Services.EmailService>();
+
+// Configure email settings
+builder.Services.Configure<VersePress.Infrastructure.Services.EmailSettings>(
+    builder.Configuration.GetSection("EmailSettings"));
 
 // Configure CORS for SignalR connections
 builder.Services.AddCors(options =>
@@ -251,6 +269,22 @@ builder.Services.AddHealthChecks()
 
 var app = builder.Build();
 
+// Validate configuration on startup
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var configValidator = services.GetRequiredService<VersePress.Web.Configuration.ConfigurationValidator>();
+        configValidator.ValidateConfiguration();
+    }
+    catch (Exception ex)
+    {
+        Log.Fatal(ex, "Configuration validation failed. Application cannot start.");
+        throw;
+    }
+}
+
 // Apply migrations automatically in development environment
 if (app.Environment.IsDevelopment())
 {
@@ -262,19 +296,29 @@ if (app.Environment.IsDevelopment())
             var context = services.GetRequiredService<ApplicationDbContext>();
             await context.Database.MigrateAsync();
 
-            // Seed roles
+            // Seed database with sample data
+            var userManager = services.GetRequiredService<UserManager<User>>();
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
-            await SeedRolesAsync(roleManager);
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            var seederLogger = loggerFactory.CreateLogger<VersePress.Infrastructure.Data.DatabaseSeeder>();
+            
+            var seeder = new VersePress.Infrastructure.Data.DatabaseSeeder(
+                context,
+                userManager,
+                roleManager,
+                seederLogger);
+            
+            await seeder.SeedAsync();
         }
         catch (Exception ex)
         {
             var logger = services.GetRequiredService<ILogger<Program>>();
-            logger.LogError(ex, "An error occurred while migrating the database.");
+            logger.LogError(ex, "An error occurred while migrating or seeding the database.");
         }
     }
 }
 
-// Seed roles method
+// Seed roles method (kept for backward compatibility)
 static async Task SeedRolesAsync(RoleManager<IdentityRole<Guid>> roleManager)
 {
     string[] roleNames = { "Admin", "Author" };
@@ -347,6 +391,9 @@ app.UseRouting();
 
 // Enable output caching
 app.UseOutputCache();
+
+// Enable contact form rate limiting
+app.UseMiddleware<VersePress.Web.Middleware.ContactFormRateLimitMiddleware>();
 
 // Enable theme middleware
 app.UseTheme();
