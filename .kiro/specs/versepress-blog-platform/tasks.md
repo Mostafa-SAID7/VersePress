@@ -68,13 +68,13 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - _Requirements: 18.8_
 
 
-- [~] 5. Implement repository pattern in Infrastructure layer
+- [x] 5. Implement repository pattern in Infrastructure layer
   - [x] 5.1 Create generic Repository<T> base class
     - Implement IRepository<T> with async EF Core operations
     - Inject ApplicationDbContext via constructor
     - _Requirements: 18.1, 18.4, 18.5, 18.6_
   
-  - [~] 5.2 Implement specialized repositories
+  - [x] 5.2 Implement specialized repositories
     - Create BlogPostRepository implementing IBlogPostRepository with all query methods including eager loading of related entities
     - Create CommentRepository implementing ICommentRepository with nested comment loading and approval filtering
     - Create ReactionRepository implementing IReactionRepository with aggregation methods
@@ -89,7 +89,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
     - _Requirements: 18.1, 26.6_
 
 - [~] 6. Implement Application layer services
-  - [~] 6.1 Create BlogPostService
+  - [x] 6.1 Create BlogPostService
     - Implement CreateBlogPostAsync: validate input, generate unique slug, save to repository
     - Implement UpdateBlogPostAsync: validate ownership, update fields, save changes
     - Implement DeleteBlogPostAsync: verify ownership, delete via repository
