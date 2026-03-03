@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using VersePress.Application.Interfaces;
 using VersePress.Web.Models;
 
@@ -71,24 +72,28 @@ public class BlogController : Controller
         }
     }
 
+    [OutputCache(Duration = 300, VaryByQueryKeys = new[] { "page" }, VaryByHeaderNames = new[] { "Accept-Language", "Cookie" })]
     public async Task<IActionResult> ByTag(string slug, int page = 1)
     {
         // TODO: Implement tag filtering
         return View("Index");
     }
 
+    [OutputCache(Duration = 300, VaryByQueryKeys = new[] { "page" }, VaryByHeaderNames = new[] { "Accept-Language", "Cookie" })]
     public async Task<IActionResult> ByCategory(string slug, int page = 1)
     {
         // TODO: Implement category filtering
         return View("Index");
     }
 
+    [OutputCache(Duration = 300, VaryByHeaderNames = new[] { "Accept-Language", "Cookie" })]
     public async Task<IActionResult> BySeries(string slug)
     {
         // TODO: Implement series filtering
         return View("Index");
     }
 
+    [OutputCache(Duration = 300, VaryByHeaderNames = new[] { "Accept-Language", "Cookie" })]
     public async Task<IActionResult> ByProject(string slug)
     {
         // TODO: Implement project filtering

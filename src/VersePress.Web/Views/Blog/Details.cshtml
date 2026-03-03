@@ -165,7 +165,10 @@
                     <div class="card">
                         @if (!string.IsNullOrEmpty(relatedPost.FeaturedImageUrl))
                         {
-                            <img src="@relatedPost.FeaturedImageUrl" class="card-img-top" alt="@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)" />
+                            <img src="@relatedPost.FeaturedImageUrl" 
+                                 class="card-img-top" 
+                                 alt="@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)" 
+                                 loading="lazy" />
                         }
                         <div class="card-body">
                             <h5 class="card-title">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? relatedPost.TitleAr : relatedPost.TitleEn)</h5>

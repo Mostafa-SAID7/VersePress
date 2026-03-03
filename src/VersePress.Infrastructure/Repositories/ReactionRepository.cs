@@ -23,6 +23,7 @@ public class ReactionRepository : Repository<Reaction>, IReactionRepository
     public async Task<Reaction?> GetUserReactionAsync(Guid blogPostId, Guid userId)
     {
         return await _dbSet
+            .AsNoTracking()
             .FirstOrDefaultAsync(r => r.BlogPostId == blogPostId && r.UserId == userId);
     }
 
@@ -30,6 +31,7 @@ public class ReactionRepository : Repository<Reaction>, IReactionRepository
     public async Task<Dictionary<ReactionType, int>> GetReactionCountsAsync(Guid blogPostId)
     {
         var reactions = await _dbSet
+            .AsNoTracking()
             .Where(r => r.BlogPostId == blogPostId)
             .GroupBy(r => r.ReactionType)
             .Select(g => new { ReactionType = g.Key, Count = g.Count() })

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using VersePress.Application.Interfaces;
 using VersePress.Web.Models;
 
@@ -17,6 +18,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [OutputCache(Duration = 300, VaryByQueryKeys = new[] { "page" }, VaryByHeaderNames = new[] { "Accept-Language", "Cookie" })]
     public async Task<IActionResult> Index(int page = 1)
     {
         const int pageSize = 10;

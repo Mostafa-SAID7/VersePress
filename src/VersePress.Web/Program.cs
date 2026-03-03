@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using System.IO.Compression;
 using VersePress.Application.Interfaces;
 using VersePress.Application.Services;
 using VersePress.Domain.Entities;
@@ -12,6 +14,49 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add WebOptimizer for bundling and minification
+builder.Services.AddWebOptimizer(pipeline =>
+{
+    // Minify CSS files
+    pipeline.MinifyCssFiles("wwwroot/css/**/*.css");
+    
+    // Minify JavaScript files
+    pipeline.MinifyJsFiles("wwwroot/js/**/*.js");
+    
+    // Create CSS bundle
+    pipeline.AddCssBundle("/css/site.min.css", "wwwroot/css/site.css");
+    
+    // Create JS bundle
+    pipeline.AddJavaScriptBundle("/js/site.min.js", "wwwroot/js/site.js");
+});
+
+// Add response compression with Gzip and Brotli
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
+    {
+        "application/json",
+        "application/javascript",
+        "text/css",
+        "text/html",
+        "text/plain",
+        "image/svg+xml"
+    });
+});
+
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Fastest;
+});
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal;
+});
 
 // Add output caching for SEO endpoints
 builder.Services.AddOutputCache();
@@ -167,6 +212,24 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Enable WebOptimizer (must be before static files)
+app.UseWebOptimizer();
+
+// Enable response compression (must be before static files)
+app.UseResponseCompression();
+
+// Configure static files with caching
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        // Cache static assets for 1 year
+        const int durationInSeconds = 60 * 60 * 24 * 365; // 1 year
+        ctx.Context.Response.Headers.Append("Cache-Control", $"public,max-age={durationInSeconds}");
+    }
+});
+
 app.UseRouting();
 
 // Enable output caching

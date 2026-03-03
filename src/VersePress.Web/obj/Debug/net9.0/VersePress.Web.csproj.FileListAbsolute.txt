@@ -244,3 +244,6 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\en-US\VersePress.Web.resources.cs
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\en-US\VersePress.Web.resources.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-utqyseu6j9.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\WebOptimizer.Core.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\NUglify.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.MvcApplicationPartsAssemblyInfo.cs

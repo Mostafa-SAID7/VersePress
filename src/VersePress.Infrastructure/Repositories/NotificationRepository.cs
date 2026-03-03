@@ -21,7 +21,7 @@ public class NotificationRepository : Repository<Notification>, INotificationRep
     /// <inheritdoc/>
     public async Task<IEnumerable<Notification>> GetUserNotificationsAsync(Guid userId, bool unreadOnly)
     {
-        var query = _dbSet.Where(n => n.UserId == userId);
+        var query = _dbSet.AsNoTracking().Where(n => n.UserId == userId);
 
         if (unreadOnly)
         {
@@ -36,7 +36,9 @@ public class NotificationRepository : Repository<Notification>, INotificationRep
     /// <inheritdoc/>
     public async Task<int> GetUnreadCountAsync(Guid userId)
     {
-        return await _dbSet.CountAsync(n => n.UserId == userId && !n.IsRead);
+        return await _dbSet
+            .AsNoTracking()
+            .CountAsync(n => n.UserId == userId && !n.IsRead);
     }
 
     /// <inheritdoc/>

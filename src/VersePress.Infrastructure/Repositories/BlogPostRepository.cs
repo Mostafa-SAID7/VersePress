@@ -22,6 +22,7 @@ public class BlogPostRepository : Repository<BlogPost>, IBlogPostRepository
     public async Task<BlogPost?> GetBySlugAsync(string slug)
     {
         return await _dbSet
+            .AsNoTracking()
             .Include(p => p.Author)
             .Include(p => p.Tags)
             .Include(p => p.Categories)
@@ -34,6 +35,7 @@ public class BlogPostRepository : Repository<BlogPost>, IBlogPostRepository
     public async Task<IEnumerable<BlogPost>> GetPublishedPostsAsync(int page, int pageSize)
     {
         return await _dbSet
+            .AsNoTracking()
             .Include(p => p.Author)
             .Include(p => p.Tags)
             .Include(p => p.Categories)
@@ -48,6 +50,7 @@ public class BlogPostRepository : Repository<BlogPost>, IBlogPostRepository
     public async Task<IEnumerable<BlogPost>> GetFeaturedPostsAsync(int count)
     {
         return await _dbSet
+            .AsNoTracking()
             .Include(p => p.Author)
             .Include(p => p.Tags)
             .Include(p => p.Categories)
@@ -61,6 +64,7 @@ public class BlogPostRepository : Repository<BlogPost>, IBlogPostRepository
     public async Task<IEnumerable<BlogPost>> GetPostsByAuthorAsync(Guid authorId)
     {
         return await _dbSet
+            .AsNoTracking()
             .Include(p => p.Tags)
             .Include(p => p.Categories)
             .Where(p => p.AuthorId == authorId)
@@ -73,6 +77,7 @@ public class BlogPostRepository : Repository<BlogPost>, IBlogPostRepository
     {
         var lowerQuery = query.ToLower();
         return await _dbSet
+            .AsNoTracking()
             .Include(p => p.Author)
             .Include(p => p.Tags)
             .Include(p => p.Categories)
@@ -88,6 +93,8 @@ public class BlogPostRepository : Repository<BlogPost>, IBlogPostRepository
     /// <inheritdoc/>
     public async Task<bool> SlugExistsAsync(string slug)
     {
-        return await _dbSet.AnyAsync(p => p.Slug == slug);
+        return await _dbSet
+            .AsNoTracking()
+            .AnyAsync(p => p.Slug == slug);
     }
 }

@@ -22,6 +22,7 @@ public class CommentRepository : Repository<Comment>, ICommentRepository
     public async Task<IEnumerable<Comment>> GetCommentsByPostAsync(Guid blogPostId)
     {
         return await _dbSet
+            .AsNoTracking()
             .Include(c => c.User)
             .Include(c => c.Replies)
                 .ThenInclude(r => r.User)
@@ -34,6 +35,7 @@ public class CommentRepository : Repository<Comment>, ICommentRepository
     public async Task<IEnumerable<Comment>> GetPendingCommentsAsync()
     {
         return await _dbSet
+            .AsNoTracking()
             .Include(c => c.User)
             .Include(c => c.BlogPost)
             .Where(c => !c.IsApproved)
@@ -44,6 +46,8 @@ public class CommentRepository : Repository<Comment>, ICommentRepository
     /// <inheritdoc/>
     public async Task<int> GetPendingCommentCountAsync()
     {
-        return await _dbSet.CountAsync(c => !c.IsApproved);
+        return await _dbSet
+            .AsNoTracking()
+            .CountAsync(c => !c.IsApproved);
     }
 }
