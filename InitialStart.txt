@@ -94,6 +94,8 @@ Emoji picker
 Dark/light animated toggle
 Microsoft-style dotted background grid
 
+AJAX
+
 top features: 
 
 used Reading Time Calculation

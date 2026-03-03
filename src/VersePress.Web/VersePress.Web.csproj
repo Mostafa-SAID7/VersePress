@@ -2,6 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VersePress.Application\VersePress.Application.csproj" />
+    <ProjectReference Include="..\VersePress.Infrastructure\VersePress.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

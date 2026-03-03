@@ -9,3 +9,5 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\n
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\refint\VersePress.Domain.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\ref\VersePress.Domain.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.sourcelink.json
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.csproj.AssemblyReference.cache

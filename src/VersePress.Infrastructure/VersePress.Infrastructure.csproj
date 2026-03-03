@@ -2,6 +2,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VersePress.Domain\VersePress.Domain.csproj" />
+    <ProjectReference Include="..\VersePress.Application\VersePress.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

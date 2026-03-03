@@ -13,3 +13,4 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\De
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\refint\VersePress.Persistence.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\ref\VersePress.Persistence.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Persistence\obj\Debug\net9.0\VersePress.Persistence.sourcelink.json

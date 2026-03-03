@@ -13,3 +13,4 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Application\obj\De
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Application\obj\Debug\net9.0\refint\VersePress.Application.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Application\obj\Debug\net9.0\VersePress.Application.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Application\obj\Debug\net9.0\ref\VersePress.Application.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Application\obj\Debug\net9.0\VersePress.Application.sourcelink.json

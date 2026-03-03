@@ -96,3 +96,4 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\obj\Debug\
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\obj\Debug\net9.0\VersePress.Tests.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\obj\Debug\net9.0\VersePress.Tests.genruntimeconfig.cache
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\obj\Debug\net9.0\ref\VersePress.Tests.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\tests\VersePress.Tests\obj\Debug\net9.0\VersePress.Tests.sourcelink.json
