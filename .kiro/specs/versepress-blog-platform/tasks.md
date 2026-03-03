@@ -69,7 +69,7 @@ This implementation plan breaks down the VersePress bilingual blog platform into
 
 
 - [~] 5. Implement repository pattern in Infrastructure layer
-  - [~] 5.1 Create generic Repository<T> base class
+  - [x] 5.1 Create generic Repository<T> base class
     - Implement IRepository<T> with async EF Core operations
     - Inject ApplicationDbContext via constructor
     - _Requirements: 18.1, 18.4, 18.5, 18.6_
