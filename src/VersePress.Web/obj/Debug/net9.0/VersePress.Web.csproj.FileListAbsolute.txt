@@ -179,8 +179,8 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\scopedcss\projectbundle\VersePress.Web.bundle.scp.css
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\qo2lwdz4yh-li15xtdyf3.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\2f74ki81fg-wsht9teph3.gz
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-tnm47b5w8v.gz
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\3i7knnhko9-illyzrthy7.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-krnieptjfh.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\3i7knnhko9-nf23oq2yzy.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\vsufbjij3a-gucan7wivr.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\80tp4p3vm4-ci51k4tsln.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\2bzqj1vdgh-0p7aj8y6u3.gz
@@ -262,3 +262,4 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.genruntimeconfig.cache
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\ref\VersePress.Web.dll
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\Newtonsoft.Json.dll

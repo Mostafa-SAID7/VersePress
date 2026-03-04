@@ -298,17 +298,16 @@ if (app.Environment.IsDevelopment())
             var context = services.GetRequiredService<ApplicationDbContext>();
             await context.Database.MigrateAsync();
 
-            // Seed database with sample data
+            // Seed database with tech-focused sample data
             var userManager = services.GetRequiredService<UserManager<User>>();
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
             var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-            var seederLogger = loggerFactory.CreateLogger<VersePress.Infrastructure.Data.DatabaseSeeder>();
             
-            var seeder = new VersePress.Infrastructure.Data.DatabaseSeeder(
+            var seeder = new VersePress.Infrastructure.Data.Seeds.DatabaseSeeder(
                 context,
                 userManager,
                 roleManager,
-                seederLogger);
+                loggerFactory);
             
             await seeder.SeedAsync();
         }
@@ -462,8 +461,8 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
 });
 
 // Map SignalR hub endpoints
-app.MapHub<VersePress.Web.Hubs.NotificationHub>("/hubs/notifications");
-app.MapHub<VersePress.Web.Hubs.InteractionHub>("/hubs/interactions");
+app.MapHub<VersePress.Infrastructure.Hubs.NotificationHub>("/hubs/notifications");
+app.MapHub<VersePress.Infrastructure.Hubs.InteractionHub>("/hubs/interactions");
 
 app.MapControllerRoute(
     name: "default",

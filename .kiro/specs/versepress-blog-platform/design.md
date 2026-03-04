@@ -351,6 +351,42 @@ public interface INotificationRepository : IRepository<Notification>
 
 ### Infrastructure Layer Components
 
+#### Folder Structure
+
+```
+src/VersePress.Infrastructure/
+├── Data/
+│   ├── ApplicationDbContext.cs
+│   ├── Configurations/
+│   │   ├── BlogPostConfiguration.cs
+│   │   ├── CommentConfiguration.cs
+│   │   ├── ReactionConfiguration.cs
+│   │   ├── ShareConfiguration.cs
+│   │   ├── TagConfiguration.cs
+│   │   ├── CategoryConfiguration.cs
+│   │   ├── SeriesConfiguration.cs
+│   │   ├── ProjectConfiguration.cs
+│   │   └── NotificationConfiguration.cs
+│   └── Seeds/
+│       ├── DatabaseSeeder.cs
+│       ├── UserSeeder.cs
+│       ├── TagSeeder.cs
+│       ├── CategorySeeder.cs
+│       ├── SeriesSeeder.cs
+│       ├── ProjectSeeder.cs
+│       └── BlogPostSeeder.cs
+├── Repositories/
+│   ├── UnitOfWork.cs
+│   ├── Repository.cs
+│   ├── BlogPostRepository.cs
+│   ├── CommentRepository.cs
+│   ├── ReactionRepository.cs
+│   └── NotificationRepository.cs
+└── Hubs/
+    ├── NotificationHub.cs
+    └── InteractionHub.cs
+```
+
 #### DbContext Configuration
 
 **ApplicationDbContext**
