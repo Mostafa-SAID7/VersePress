@@ -262,3 +262,4 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\2k34e4vi7u-bkra6ldtd3.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\2f74ki81fg-o00sv7psx1.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\3i7knnhko9-w40lfa8a1f.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-sq548wvc00.gz

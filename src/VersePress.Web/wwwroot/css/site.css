@@ -136,6 +136,27 @@ body {
   background-color: var(--link-hover-color);
 }
 
+.navbar-nav .btn-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar-nav .btn-link:hover {
+  background-color: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+.navbar-nav form {
+  margin: 0;
+  padding: 0;
+}
+
 .card {
   background-color: var(--card-bg);
   border-color: var(--border-color);
