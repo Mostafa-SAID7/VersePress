@@ -81,17 +81,37 @@
     @* Reactions *@
     <div class="post-reactions mb-4">
         <h5>Reactions</h5>
-        <div class="reaction-buttons d-flex flex-wrap gap-2">
-            @foreach (var reaction in Model.ReactionCounts)
-            {
-                <button class="btn btn-outline-primary reaction-btn touch-target" 
-                        data-reaction="@reaction.Key" 
-                        data-post-id="@Model.Post.Id"
-                        data-active="@(Model.UserReaction == reaction.Key.ToString())">
-                    @reaction.Key <span class="badge bg-primary">@reaction.Value</span>
-                </button>
-            }
-        </div>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <div class="reaction-buttons d-flex flex-wrap gap-2">
+                @foreach (var reaction in Model.ReactionCounts)
+                {
+                    <button class="btn btn-outline-primary reaction-btn touch-target" 
+                            data-reaction="@reaction.Key" 
+                            data-post-id="@Model.Post.Id"
+                            data-active="@(Model.UserReaction == reaction.Key.ToString())">
+                        @reaction.Key <span class="badge bg-primary">@reaction.Value</span>
+                    </button>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="reaction-buttons d-flex flex-wrap gap-2">
+                @foreach (var reaction in Model.ReactionCounts)
+                {
+                    <button class="btn btn-outline-secondary reaction-btn touch-target" 
+                            disabled
+                            title="Please log in to react">
+                        @reaction.Key <span class="badge bg-secondary">@reaction.Value</span>
+                    </button>
+                }
+            </div>
+            <p class="text-muted mt-2 mb-0">
+                <i class="bi bi-info-circle"></i>
+                <a href="@Url.Action("Login", "Account", new { returnUrl = Context.Request.Path })">Log in</a> to react to this post
+            </p>
+        }
     </div>
 
     @* Share buttons *@
@@ -229,7 +249,7 @@
         });
 
         // Reaction buttons
-        document.querySelectorAll('.reaction-btn').forEach(btn => {
+        document.querySelectorAll('.reaction-btn:not([disabled])').forEach(btn => {
             btn.addEventListener('click', async () => {
                 const reaction = btn.dataset.reaction;
                 const postId = btn.dataset.postId;
@@ -245,9 +265,15 @@
                     
                     if (response.ok) {
                         location.reload(); // Reload to show updated counts
+                    } else if (response.status === 401) {
+                        alert('Please log in to react to this post');
+                        window.location.href = '/Account/Login?returnUrl=' + encodeURIComponent(window.location.pathname);
+                    } else {
+                        alert('Error adding reaction. Please try again.');
                     }
                 } catch (error) {
                     console.error('Error:', error);
+                    alert('Error adding reaction. Please try again.');
                 }
             });
         });
