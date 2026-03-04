@@ -46,7 +46,7 @@ public class HomeController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading home page");
-            return View("Error");
+            return View("Errors/Error");
         }
     }
 
@@ -120,11 +120,11 @@ public class HomeController : Controller
         {
             if (statusCode == 404)
             {
-                return View("NotFound");
+                return View("Errors/NotFound");
             }
             else if (statusCode == 500)
             {
-                return View("ServerError");
+                return View("Errors/ServerError");
             }
         }
 

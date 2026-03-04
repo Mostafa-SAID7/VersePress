@@ -47,7 +47,7 @@ public class AdminController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading admin dashboard");
-            return View("Error");
+            return View("Errors/Error");
         }
     }
 
@@ -61,7 +61,7 @@ public class AdminController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading posts");
-            return View("Error");
+            return View("Errors/Error");
         }
     }
 
@@ -75,7 +75,7 @@ public class AdminController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading comments");
-            return View("Error");
+            return View("Errors/Error");
         }
     }
 

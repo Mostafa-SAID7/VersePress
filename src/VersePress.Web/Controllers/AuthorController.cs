@@ -39,7 +39,7 @@ public class AuthorController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading author dashboard");
-            return View("Error");
+            return View("Errors/Error");
         }
     }
 
@@ -131,7 +131,7 @@ public class AuthorController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading blog post for edit: {Id}", id);
-            return View("Error");
+            return View("Errors/Error");
         }
     }
 
