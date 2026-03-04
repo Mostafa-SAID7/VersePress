@@ -377,6 +377,23 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
+// Disable caching for HTML responses in development
+if (app.Environment.IsDevelopment())
+{
+    app.Use(async (context, next) =>
+    {
+        await next();
+        
+        // Only apply to HTML responses
+        if (context.Response.ContentType?.Contains("text/html") == true)
+        {
+            context.Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
+            context.Response.Headers.Append("Pragma", "no-cache");
+            context.Response.Headers.Append("Expires", "0");
+        }
+    });
+}
+
 app.UseRouting();
 
 // Enable output caching

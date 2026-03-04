@@ -1,0 +1,8 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; @DateTime.Now.Year - <a href="https://m-said-portfolio.netlify.app" target="_blank" rel="noopener noreferrer">M.Said</a> - VersePress - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["Privacy"]</a>
+    </div>
+</footer>

@@ -257,7 +257,6 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\uowabr4aax-0h7la9ad5z.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\whpg10z35k-5pcmdgdlen.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\bin\Debug\net9.0\appsettings.Production.json
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\2f74ki81fg-0wmqhsg8br.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\bbw02f7d3m-yj1pg7ovje.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\uzm3xyzj9e-bkra6ldtd3.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\2k34e4vi7u-bkra6ldtd3.gz

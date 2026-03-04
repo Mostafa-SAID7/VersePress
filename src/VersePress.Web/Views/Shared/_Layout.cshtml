@@ -14,6 +14,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>@ViewData["Title"] - VersePress</title>
     
     @* Favicon *@
@@ -70,11 +73,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - <a href="https://m-said-portfolio.netlify.app" target="_blank" rel="noopener noreferrer">M.Said</a> - VersePress - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["Privacy"]</a>
-        </div>
-    </footer>
+    <partial name="_Footer" />
 
     @* Toaster Component for notifications *@
     <partial name="Components/_Toaster" />
