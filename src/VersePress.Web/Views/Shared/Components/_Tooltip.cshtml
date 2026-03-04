@@ -1,0 +1,16 @@
+@*
+    Tooltip Component - Displays tooltip on hover
+    Parameters: (string content, string tooltipText, string? position)
+    Positions: top, bottom, left, right
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, string?>? ?? ("Hover me", "Tooltip text", "top");
+    var content = parameters.Item1;
+    var tooltipText = parameters.Item2;
+    var position = parameters.Item3 ?? "top";
+}
+
+<span class="tooltip-component" data-tooltip="@tooltipText" data-position="@position">
+    @Html.Raw(content)
+</span>

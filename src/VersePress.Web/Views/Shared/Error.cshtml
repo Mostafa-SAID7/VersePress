@@ -1,4 +1,4 @@
-﻿@model ErrorViewModel
+@model ErrorViewModel
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 @{
@@ -36,29 +36,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .error-page {
-        padding: 2rem 0;
-    }
-    
-    .error-page h1 {
-        font-size: 6rem;
-        line-height: 1;
-        margin-bottom: 1rem;
-    }
-    
-    .error-page h2 {
-        font-size: 2rem;
-    }
-    
-    @@media (max-width: 768px) {
-        .error-page h1 {
-            font-size: 4rem;
-        }
-        
-        .error-page h2 {
-            font-size: 1.5rem;
-        }
-    }
-</style>

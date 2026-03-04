@@ -1,0 +1,20 @@
+@*
+    Badge Component - Displays badge/pill
+    Parameters: (string text, string variant, string? icon)
+    Variants: primary, secondary, success, danger, warning, info, light, dark
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, string?>? ?? ("Badge", "primary", null);
+    var text = parameters.Item1;
+    var variant = parameters.Item2;
+    var icon = parameters.Item3;
+}
+
+<span class="badge-component bg-@variant">
+    @if (!string.IsNullOrEmpty(icon))
+    {
+        <i class="bi bi-@icon me-1"></i>
+    }
+    @text
+</span>

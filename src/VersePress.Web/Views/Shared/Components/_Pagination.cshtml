@@ -1,15 +1,16 @@
-@model (int CurrentPage, int TotalPages, string Action, string Controller, object RouteValues)
+@using Microsoft.AspNetCore.Routing
+@model (int CurrentPage, int TotalPages, string Action, string Controller, object? RouteValues)
 
 @if (Model.TotalPages > 1)
 {
+    var routeValues = Model.RouteValues != null ? new RouteValueDictionary(Model.RouteValues) : new RouteValueDictionary();
+    
     <nav aria-label="Page navigation" class="mt-4">
         <ul class="pagination justify-content-center">
             @* Previous Button *@
             <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
                 <a class="page-link" 
-                   asp-controller="@Model.Controller" 
-                   asp-action="@Model.Action" 
-                   asp-all-route-data="@(new RouteValueDictionary(Model.RouteValues) { ["page"] = Model.CurrentPage - 1 })"
+                   href="@Url.Action(Model.Action, Model.Controller, new RouteValueDictionary(routeValues) { ["page"] = Model.CurrentPage - 1 })"
                    aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
@@ -24,9 +25,7 @@
                 {
                     <li class="page-item">
                         <a class="page-link" 
-                           asp-controller="@Model.Controller" 
-                           asp-action="@Model.Action" 
-                           asp-all-route-data="@(new RouteValueDictionary(Model.RouteValues) { ["page"] = 1 })">1</a>
+                           href="@Url.Action(Model.Action, Model.Controller, new RouteValueDictionary(routeValues) { ["page"] = 1 })">1</a>
                     </li>
                     if (startPage > 2)
                     {
@@ -38,9 +37,7 @@
                 {
                     <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
                         <a class="page-link" 
-                           asp-controller="@Model.Controller" 
-                           asp-action="@Model.Action" 
-                           asp-all-route-data="@(new RouteValueDictionary(Model.RouteValues) { ["page"] = i })">@i</a>
+                           href="@Url.Action(Model.Action, Model.Controller, new RouteValueDictionary(routeValues) { ["page"] = i })">@i</a>
                     </li>
                 }
                 
@@ -52,9 +49,7 @@
                     }
                     <li class="page-item">
                         <a class="page-link" 
-                           asp-controller="@Model.Controller" 
-                           asp-action="@Model.Action" 
-                           asp-all-route-data="@(new RouteValueDictionary(Model.RouteValues) { ["page"] = Model.TotalPages })">@Model.TotalPages</a>
+                           href="@Url.Action(Model.Action, Model.Controller, new RouteValueDictionary(routeValues) { ["page"] = Model.TotalPages })">@Model.TotalPages</a>
                     </li>
                 }
             }
@@ -62,9 +57,7 @@
             @* Next Button *@
             <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
                 <a class="page-link" 
-                   asp-controller="@Model.Controller" 
-                   asp-action="@Model.Action" 
-                   asp-all-route-data="@(new RouteValueDictionary(Model.RouteValues) { ["page"] = Model.CurrentPage + 1 })"
+                   href="@Url.Action(Model.Action, Model.Controller, new RouteValueDictionary(routeValues) { ["page"] = Model.CurrentPage + 1 })"
                    aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>

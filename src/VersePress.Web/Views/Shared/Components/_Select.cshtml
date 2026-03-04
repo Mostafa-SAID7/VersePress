@@ -1,0 +1,41 @@
+@*
+    Select Component - Reusable select dropdown with validation
+    Parameters: (string name, string label, List<(string value, string text)> options, string? selectedValue, bool required)
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, List<(string, string)>, string?, bool>? 
+        ?? ("inputName", "Label", new List<(string, string)>(), null, false);
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var options = parameters.Item3;
+    var selectedValue = parameters.Item4;
+    var required = parameters.Item5;
+    var id = name.Replace(".", "_");
+}
+
+<div class="form-group">
+    <label for="@id" class="form-label">
+        @label
+        @if (required)
+        {
+            <span class="text-danger">*</span>
+        }
+    </label>
+    <select class="form-select" 
+            id="@id" 
+            name="@name"
+            @(required ? "required" : "")
+            aria-label="@label"
+            aria-required="@(required ? "true" : "false")">
+        <option value="">-- Select @label --</option>
+        @foreach (var option in options)
+        {
+            var isSelected = option.Item1 == selectedValue;
+            <option value="@option.Item1" selected="@isSelected">
+                @option.Item2
+            </option>
+        }
+    </select>
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>

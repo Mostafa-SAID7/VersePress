@@ -1,3 +1,4 @@
+@using VersePress.Application.DTOs
 @model IEnumerable<CommentDto>
 @{
     ViewData["Title"] = "Manage Comments";
@@ -25,7 +26,7 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="card-subtitle mb-2 text-muted">
-                                        @comment.AuthorName - @comment.CreatedAt.ToString("MMM dd, yyyy HH:mm")
+                                        @comment.UserName - @comment.CreatedAt.ToString("MMM dd, yyyy HH:mm")
                                     </h6>
                                     <p class="card-text">@comment.Content</p>
                                     <small class="text-muted">

@@ -1,0 +1,29 @@
+@*
+    Progress Bar Component - Displays progress indicator
+    Parameters: (int percentage, string? variant, bool? showLabel, bool? animated)
+    Variants: primary, success, info, warning, danger
+*@
+
+@{
+    var parameters = Model as ValueTuple<int, string?, bool?, bool?>? ?? (0, "primary", true, false);
+    var percentage = Math.Max(0, Math.Min(100, parameters.Item1));
+    var variant = parameters.Item2 ?? "primary";
+    var showLabel = parameters.Item3 ?? true;
+    var animated = parameters.Item4 ?? false;
+}
+
+<div class="progress-bar-component">
+    <div class="progress" style="height: 24px;">
+        <div class="progress-bar bg-@variant @(animated ? "progress-bar-striped progress-bar-animated" : "")" 
+             role="progressbar" 
+             style="width: @percentage%;" 
+             aria-valuenow="@percentage" 
+             aria-valuemin="0" 
+             aria-valuemax="100">
+            @if (showLabel)
+            {
+                <span>@percentage%</span>
+            }
+        </div>
+    </div>
+</div>

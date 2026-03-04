@@ -1,0 +1,37 @@
+@*
+    Text Input Component - Reusable text input with validation
+    Parameters: (string name, string label, string? value, string? placeholder, bool required, string? type)
+    Types: text, email, password, url, tel, number
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, string?, string?, bool, string?>? 
+        ?? ("inputName", "Label", null, null, false, "text");
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var value = parameters.Item3;
+    var placeholder = parameters.Item4 ?? label;
+    var required = parameters.Item5;
+    var type = parameters.Item6 ?? "text";
+    var id = name.Replace(".", "_");
+}
+
+<div class="form-group">
+    <label for="@id" class="form-label">
+        @label
+        @if (required)
+        {
+            <span class="text-danger">*</span>
+        }
+    </label>
+    <input type="@type" 
+           class="form-control" 
+           id="@id" 
+           name="@name" 
+           value="@value" 
+           placeholder="@placeholder"
+           @(required ? "required" : "")
+           aria-label="@label"
+           aria-required="@(required ? "true" : "false")" />
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>

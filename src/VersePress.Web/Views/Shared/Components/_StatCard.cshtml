@@ -1,0 +1,15 @@
+@model (string Icon, string Title, string Value, string Color, string Link, string LinkText)
+
+<div class="card text-center shadow-sm stat-card h-100 @Model.Color">
+    <div class="card-body">
+        <i class="bi bi-@Model.Icon stat-icon"></i>
+        <h3 class="stat-value mt-3">@Model.Value</h3>
+        <p class="stat-title mb-0">@Model.Title</p>
+        @if (!string.IsNullOrEmpty(Model.Link))
+        {
+            <a href="@Model.Link" class="btn btn-sm btn-outline-light mt-3">
+                @Model.LinkText <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        }
+    </div>
+</div>

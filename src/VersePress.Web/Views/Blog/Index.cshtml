@@ -1,3 +1,4 @@
+@using VersePress.Application.DTOs
 @model IEnumerable<BlogPostDto>
 @{
     ViewData["Title"] = ViewBag.PageTitle ?? "Blog Posts";
@@ -93,12 +94,3 @@
         </nav>
     }
 </div>
-
-<style>
-    .hover-shadow {
-        transition: box-shadow 0.3s ease;
-    }
-    .hover-shadow:hover {
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    }
-</style>

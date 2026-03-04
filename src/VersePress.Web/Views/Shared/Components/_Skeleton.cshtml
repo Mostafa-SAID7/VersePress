@@ -1,0 +1,81 @@
+@*
+    Skeleton Loader Component - Displays loading placeholder
+    Parameters: (string type, int? count, string? customClass)
+    Types: card, text, avatar, button, list, table
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, int?, string?>? ?? ("card", 1, null);
+    var type = parameters.Item1;
+    var count = parameters.Item2 ?? 1;
+    var customClass = parameters.Item3 ?? "";
+}
+
+<div class="skeleton-container @customClass">
+    @for (int i = 0; i < count; i++)
+    {
+        @switch (type)
+        {
+            case "card":
+                <div class="skeleton-card mb-4">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton-card-body">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                    </div>
+                </div>
+                break;
+
+            case "text":
+                <div class="skeleton skeleton-text mb-2"></div>
+                break;
+
+            case "avatar":
+                <div class="skeleton skeleton-avatar"></div>
+                break;
+
+            case "button":
+                <div class="skeleton skeleton-button"></div>
+                break;
+
+            case "list":
+                <div class="skeleton-list-item mb-3">
+                    <div class="skeleton skeleton-avatar"></div>
+                    <div class="flex-grow-1">
+                        <div class="skeleton skeleton-text mb-2"></div>
+                        <div class="skeleton skeleton-text" style="width: 70%;"></div>
+                    </div>
+                </div>
+                break;
+
+            case "table":
+                <div class="skeleton-table-row mb-2">
+                    <div class="skeleton skeleton-text"></div>
+                </div>
+                break;
+
+            case "post":
+                <div class="skeleton-post mb-4">
+                    <div class="skeleton skeleton-title mb-3"></div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="skeleton skeleton-avatar me-2"></div>
+                        <div class="flex-grow-1">
+                            <div class="skeleton skeleton-text" style="width: 150px;"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton skeleton-image mb-3"></div>
+                    <div class="skeleton skeleton-text mb-2"></div>
+                    <div class="skeleton skeleton-text mb-2"></div>
+                    <div class="skeleton skeleton-text mb-2"></div>
+                    <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                </div>
+                break;
+
+            default:
+                <div class="skeleton skeleton-text"></div>
+                break;
+        }
+    }
+</div>

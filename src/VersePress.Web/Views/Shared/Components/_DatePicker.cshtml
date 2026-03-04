@@ -1,0 +1,38 @@
+@*
+    Date Picker Component - Reusable date input with validation
+    Parameters: (string name, string label, DateTime? value, bool required, string? min, string? max)
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, DateTime?, bool, string?, string?>? 
+        ?? ("date", "Date", null, false, null, null);
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var value = parameters.Item3;
+    var required = parameters.Item4;
+    var min = parameters.Item5;
+    var max = parameters.Item6;
+    var id = name.Replace(".", "_");
+    var dateValue = value?.ToString("yyyy-MM-dd") ?? "";
+}
+
+<div class="form-group mb-3">
+    <label for="@id" class="form-label">
+        @label
+        @if (required)
+        {
+            <span class="text-danger">*</span>
+        }
+    </label>
+    <input type="date" 
+           class="form-control" 
+           id="@id" 
+           name="@name" 
+           value="@dateValue"
+           @(!string.IsNullOrEmpty(min) ? $"min=\"{min}\"" : "")
+           @(!string.IsNullOrEmpty(max) ? $"max=\"{max}\"" : "")
+           @(required ? "required" : "")
+           aria-label="@label"
+           aria-required="@(required ? "true" : "false")" />
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>

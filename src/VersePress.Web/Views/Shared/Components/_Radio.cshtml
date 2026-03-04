@@ -1,0 +1,42 @@
+@*
+    Radio Component - Reusable radio button group with validation
+    Parameters: (string name, string label, List<(string value, string text)> options, string? selectedValue, bool required)
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, List<(string, string)>, string?, bool>? 
+        ?? ("inputName", "Label", new List<(string, string)>(), null, false);
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var options = parameters.Item3;
+    var selectedValue = parameters.Item4;
+    var required = parameters.Item5;
+}
+
+<div class="form-group mb-3">
+    <label class="form-label">
+        @label
+        @if (required)
+        {
+            <span class="text-danger">*</span>
+        }
+    </label>
+    @foreach (var option in options)
+    {
+        var radioId = $"{name}_{option.Item1}".Replace(".", "_");
+        <div class="form-check">
+            <input class="form-check-input" 
+                   type="radio" 
+                   id="@radioId" 
+                   name="@name" 
+                   value="@option.Item1"
+                   @(option.Item1 == selectedValue ? "checked" : "")
+                   @(required ? "required" : "")
+                   aria-label="@option.Item2" />
+            <label class="form-check-label" for="@radioId">
+                @option.Item2
+            </label>
+        </div>
+    }
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>

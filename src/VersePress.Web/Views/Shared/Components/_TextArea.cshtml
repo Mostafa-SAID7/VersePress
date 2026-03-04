@@ -1,0 +1,35 @@
+@*
+    TextArea Component - Reusable textarea with validation
+    Parameters: (string name, string label, string? value, string? placeholder, bool required, int rows)
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, string?, string?, bool, int>? 
+        ?? ("inputName", "Label", null, null, false, 4);
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var value = parameters.Item3;
+    var placeholder = parameters.Item4 ?? label;
+    var required = parameters.Item5;
+    var rows = parameters.Item6;
+    var id = name.Replace(".", "_");
+}
+
+<div class="form-group">
+    <label for="@id" class="form-label">
+        @label
+        @if (required)
+        {
+            <span class="text-danger">*</span>
+        }
+    </label>
+    <textarea class="form-control" 
+              id="@id" 
+              name="@name" 
+              rows="@rows"
+              placeholder="@placeholder"
+              @(required ? "required" : "")
+              aria-label="@label"
+              aria-required="@(required ? "true" : "false")">@value</textarea>
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>

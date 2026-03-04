@@ -1,0 +1,42 @@
+@*
+    File Upload Component - Reusable file input with preview
+    Parameters: (string name, string label, string? accept, bool required, bool showPreview)
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, string?, bool, bool>? 
+        ?? ("file", "Upload File", null, false, true);
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var accept = parameters.Item3;
+    var required = parameters.Item4;
+    var showPreview = parameters.Item5;
+    var id = name.Replace(".", "_");
+}
+
+<div class="form-group">
+    <label for="@id" class="form-label">
+        @label
+        @if (required)
+        {
+            <span class="text-danger">*</span>
+        }
+    </label>
+    <input type="file" 
+           class="form-control" 
+           id="@id" 
+           name="@name"
+           @(!string.IsNullOrEmpty(accept) ? $"accept=\"{accept}\"" : "")
+           @(required ? "required" : "")
+           aria-label="@label"
+           aria-required="@(required ? "true" : "false")"
+           @(showPreview ? "onchange=\"previewFile(this)\"" : "") />
+    <span asp-validation-for="@name" class="text-danger"></span>
+    
+    @if (showPreview)
+    {
+        <div id="@(id)_preview" class="file-preview mt-3" style="display: none;">
+            <img id="@(id)_preview_img" class="preview-image" alt="Preview" />
+        </div>
+    }
+</div>

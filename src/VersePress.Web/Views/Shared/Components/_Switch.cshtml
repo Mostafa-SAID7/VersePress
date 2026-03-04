@@ -1,0 +1,33 @@
+@*
+    Switch Component - Reusable toggle switch
+    Parameters: (string name, string label, bool isChecked, string? helpText)
+*@
+
+@{
+    var parameters = Model as ValueTuple<string, string, bool, string?>? 
+        ?? ("switch", "Toggle", false, null);
+    var name = parameters.Item1;
+    var label = parameters.Item2;
+    var isChecked = parameters.Item3;
+    var helpText = parameters.Item4;
+    var id = name.Replace(".", "_");
+}
+
+<div class="form-check form-switch mb-3">
+    <input class="form-check-input" 
+           type="checkbox" 
+           role="switch"
+           id="@id" 
+           name="@name" 
+           value="true"
+           @(isChecked ? "checked" : "")
+           aria-label="@label" />
+    <label class="form-check-label" for="@id">
+        @label
+    </label>
+    @if (!string.IsNullOrEmpty(helpText))
+    {
+        <div class="form-text">@helpText</div>
+    }
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>
