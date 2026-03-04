@@ -191,10 +191,12 @@ public class UnitOfWork : IUnitOfWork
 
     /// <summary>
     /// Disposes the Unit of Work and releases database connections.
+    /// Note: The ApplicationDbContext is managed by dependency injection and should not be disposed here.
+    /// Only the transaction is disposed if it exists.
     /// </summary>
     public void Dispose()
     {
         _transaction?.Dispose();
-        _context.Dispose();
+        // DO NOT dispose _context here - it's managed by DI container
     }
 }
