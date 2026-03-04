@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VersePress.Web")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5ac816bac209145c15e9d867dbf1a58b82a01cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d9ef8298396d081b3e70531c2a1b3787917c887")]
 [assembly: System.Reflection.AssemblyProductAttribute("VersePress.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VersePress.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

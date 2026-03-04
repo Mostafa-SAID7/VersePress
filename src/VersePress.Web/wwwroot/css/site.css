@@ -11,38 +11,106 @@ html {
 
 /* Theme CSS Variables */
 :root {
-  /* Light theme colors (default) */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #212529;
-  --text-secondary: #6c757d;
-  --border-color: #dee2e6;
-  --link-color: #0d6efd;
-  --link-hover-color: #0a58ca;
-  --navbar-bg: #ffffff;
-  --footer-bg: #f8f9fa;
-  --footer-text: #6c757d;
-  --card-bg: #ffffff;
-  --input-bg: #ffffff;
-  --input-border: #ced4da;
+  /* ========== BRAND (YELLOW) ========== */
+  --yellow-50:  #fefce8;
+  --yellow-100: #fef9c2;
+  --yellow-200: #fff085;
+  --yellow-300: #ffdf20;
+  --yellow-400: #fdc700;
+  --yellow-500: #f0b100;
+  --yellow-600: #d08700;
+  --yellow-700: #a65f00;
+  --yellow-800: #894b00;
+  --yellow-900: #733e0a;
+  --yellow-950: #432004;
+
+  /* ========== NEUTRAL ========== */
+  --neutral-50:  #fafafa;
+  --neutral-100: #f4f4f5;
+  --neutral-200: #e4e4e7;
+  --neutral-300: #d4d4d8;
+  --neutral-400: #a1a1aa;
+  --neutral-500: #71717a;
+  --neutral-600: #52525b;
+  --neutral-700: #3f3f46;
+  --neutral-800: #27272a;
+  --neutral-900: #18181b;
+
+  /* ========== ACCENT (COMPLEMENTARY) ========== */
+  --accent-500: var(--yellow-600);
+  --accent-600: var(--yellow-700);
+
+  /* ========== STATUS COLORS ========== */
+  --success-500: #10b981;
+  --error-500:   #ef4444;
+  --warning-500: #f59e0b;
+  
+  /* Focus ring colors with opacity */
+  --focus-ring-primary: rgba(240, 177, 0, 0.25);
+  --focus-ring-error: rgba(239, 68, 68, 0.25);
+
+  /* ========== SEMANTIC TOKENS ========== */
+  --color-bg: var(--neutral-50);
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-text-primary: var(--neutral-900);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-muted: var(--neutral-500);
+  --color-border: var(--neutral-200);
+  --color-primary: var(--yellow-500);
+  --color-primary-hover: var(--yellow-600);
+  --color-primary-active: var(--yellow-700);
+  --color-on-primary: #1a1a1a;
+  --color-link: var(--accent-600);
+
+  /* Legacy variable mapping for compatibility */
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--neutral-100);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --link-color: var(--color-link);
+  --link-hover-color: var(--accent-500);
+  --navbar-bg: var(--color-surface);
+  --footer-bg: var(--neutral-100);
+  --footer-text: var(--color-text-secondary);
+  --card-bg: var(--color-surface);
+  --input-bg: var(--color-surface);
+  --input-border: var(--color-border);
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --text-primary: #e9ecef;
-  --text-secondary: #adb5bd;
-  --border-color: #495057;
-  --link-color: #6ea8fe;
-  --link-hover-color: #9ec5fe;
-  --navbar-bg: #212529;
-  --footer-bg: #212529;
-  --footer-text: #adb5bd;
-  --card-bg: #2d2d2d;
-  --input-bg: #2d2d2d;
-  --input-border: #495057;
+  /* ========== BACKGROUND LAYERS ========== */
+  --color-bg: #0f172a;
+  --color-surface: #111827;
+  --color-surface-elevated: #1f2937;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
+  --color-border: #2d3748;
+
+  /* Primary adjusted for contrast */
+  --color-primary: var(--yellow-400);
+  --color-primary-hover: var(--yellow-300);
+  --color-primary-active: var(--yellow-200);
+  --color-on-primary: #1a1a1a;
+  --color-link: var(--yellow-400);
+
+  /* Legacy variable mapping for compatibility */
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-surface-elevated);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --link-color: var(--color-link);
+  --link-hover-color: var(--yellow-300);
+  --navbar-bg: var(--color-surface);
+  --footer-bg: var(--color-surface);
+  --footer-text: var(--color-text-secondary);
+  --card-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
   --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -92,7 +160,7 @@ body {
 }
 
 .navbar-brand-text {
-  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  background: linear-gradient(135deg, var(--yellow-500) 0%, var(--yellow-600) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -100,7 +168,7 @@ body {
 }
 
 [data-theme="dark"] .navbar-brand-text {
-  background: linear-gradient(135deg, #6ea8fe 0%, #9ec5fe 100%);
+  background: linear-gradient(135deg, var(--yellow-400) 0%, var(--yellow-300) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -217,7 +285,7 @@ a:hover {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--focus-ring-primary);
 }
 
 html {
@@ -1020,8 +1088,8 @@ body,
 }
 
 .signalr-status-reconnecting {
-  background-color: #17a2b8;
-  color: #fff;
+  background-color: var(--yellow-500);
+  color: var(--color-on-primary);
 }
 
 .signalr-status-error,
@@ -1091,8 +1159,8 @@ body.rtl .signalr-status {
 /* New comment highlight animation */
 @keyframes highlight-fade {
   0% {
-    background-color: rgba(13, 110, 253, 0.2);
-    border-color: #0d6efd;
+    background-color: rgba(240, 177, 0, 0.2);
+    border-color: var(--yellow-500);
   }
   100% {
     background-color: transparent;
@@ -1121,7 +1189,7 @@ body.rtl .signalr-status {
 @media (prefers-reduced-motion: reduce) {
   .new-comment-highlight {
     animation: none;
-    background-color: rgba(13, 110, 253, 0.1);
+    background-color: rgba(240, 177, 0, 0.1);
   }
 
   .comment {
@@ -1228,7 +1296,7 @@ body.rtl .signalr-status {
 }
 
 .notification-item.unread {
-  background-color: rgba(13, 110, 253, 0.05);
+  background-color: rgba(240, 177, 0, 0.05);
 }
 
 .notification-icon {
