@@ -10,7 +10,7 @@ Disallow: /*.json$
 Disallow: /*.xml$
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap
+Sitemap: https://versepress.runasp.net/sitemap
 
 # Crawl-delay for polite crawlers
 Crawl-delay: 1
