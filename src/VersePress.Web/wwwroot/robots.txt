@@ -1,0 +1,28 @@
+# robots.txt for VersePress
+
+User-agent: *
+Allow: /
+Disallow: /Account/
+Disallow: /Admin/
+Disallow: /Author/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 1
+
+# Allow search engines to index images
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /wwwroot/images/
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

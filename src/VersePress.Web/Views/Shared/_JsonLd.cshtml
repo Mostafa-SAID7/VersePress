@@ -1,42 +1,101 @@
-@model VersePress.Application.DTOs.JsonLdDto
+@using VersePress.Application.DTOs
 @using System.Text.Json
+@model JsonLdDto
 
 @if (Model != null)
 {
-    var jsonLd = new
+    var jsonLd = new Dictionary<string, object>
     {
-        context = Model.Context,
-        type = Model.Type,
-        headline = Model.Headline,
-        description = Model.Description,
-        image = Model.Image,
-        datePublished = Model.DatePublished?.ToString("o"),
-        dateModified = Model.DateModified?.ToString("o"),
-        author = new
-        {
-            type = Model.Author?.Type,
-            name = Model.Author?.Name
-        },
-        publisher = new
-        {
-            type = Model.Publisher?.Type,
-            name = Model.Publisher?.Name,
-            logo = new
-            {
-                type = Model.Publisher?.Logo?.Type,
-                url = Model.Publisher?.Logo?.Url
-            }
-        },
-        mainEntityOfPage = Model.MainEntityOfPage
+        ["@context"] = Model.Context,
+        ["@type"] = Model.Type,
+        ["headline"] = Model.Headline,
+        ["mainEntityOfPage"] = Model.MainEntityOfPage
     };
 
-    var jsonString = JsonSerializer.Serialize(jsonLd, new JsonSerializerOptions 
-    { 
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
-    });
+    if (!string.IsNullOrEmpty(Model.Description))
+    {
+        jsonLd["description"] = Model.Description;
+    }
+
+    if (!string.IsNullOrEmpty(Model.Image))
+    {
+        jsonLd["image"] = Model.Image;
+    }
+
+    if (Model.DatePublished.HasValue)
+    {
+        jsonLd["datePublished"] = Model.DatePublished.Value.ToString("yyyy-MM-ddTHH:mm:ssZ");
+    }
+
+    if (Model.DateModified.HasValue)
+    {
+        jsonLd["dateModified"] = Model.DateModified.Value.ToString("yyyy-MM-ddTHH:mm:ssZ");
+    }
+
+    if (Model.Author != null)
+    {
+        jsonLd["author"] = new Dictionary<string, string>
+        {
+            ["@type"] = Model.Author.Type,
+            ["name"] = Model.Author.Name
+        };
+    }
+
+    if (Model.Publisher != null)
+    {
+        var publisher = new Dictionary<string, object>
+        {
+            ["@type"] = Model.Publisher.Type,
+            ["name"] = Model.Publisher.Name
+        };
+
+        if (Model.Publisher.Logo != null)
+        {
+            publisher["logo"] = new Dictionary<string, string>
+            {
+                ["@type"] = Model.Publisher.Logo.Type,
+                ["url"] = Model.Publisher.Logo.Url
+            };
+        }
+
+        jsonLd["publisher"] = publisher;
+    }
 
     <script type="application/ld+json">
-        @Html.Raw(jsonString)
+    @Html.Raw(JsonSerializer.Serialize(jsonLd, new JsonSerializerOptions 
+    { 
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    }))
+    </script>
+}
+else
+{
+    <!-- Default Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "VersePress",
+        "url": "@Context.Request.Scheme://@Context.Request.Host",
+        "logo": "@Context.Request.Scheme://@Context.Request.Host/favicon.svg",
+        "description": "A modern bilingual blog platform for tech news and insights in English and Arabic",
+        "sameAs": []
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "WebSite",
+        "name": "VersePress",
+        "url": "@Context.Request.Scheme://@Context.Request.Host",
+        "potentialAction": {
+            "@@type": "SearchAction",
+            "target": "@Context.Request.Scheme://@Context.Request.Host/Blog/Search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
     </script>
 }

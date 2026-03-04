@@ -1,8 +1,9 @@
-@model VersePress.Application.DTOs.MetaTagsDto
+@using VersePress.Application.DTOs
+@model MetaTagsDto
 
 @if (Model != null)
 {
-    <title>@Model.Title - VersePress</title>
+    <title>@Model.Title</title>
     <meta name="description" content="@Model.Description" />
     
     @if (!string.IsNullOrEmpty(Model.Keywords))
@@ -10,18 +11,28 @@
         <meta name="keywords" content="@Model.Keywords" />
     }
     
-    <link rel="canonical" href="@Model.CanonicalUrl" />
-    
-    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    @if (!string.IsNullOrEmpty(Model.CanonicalUrl))
     {
-        <meta name="image" content="@Model.ImageUrl" />
+        <link rel="canonical" href="@Model.CanonicalUrl" />
     }
     
-    @* Hreflang tags for bilingual content *@
+    <!-- Robots meta tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Language alternates -->
     @if (!string.IsNullOrEmpty(Model.AlternateUrl))
     {
         <link rel="alternate" hreflang="@Model.Language" href="@Model.CanonicalUrl" />
         <link rel="alternate" hreflang="@Model.AlternateLanguage" href="@Model.AlternateUrl" />
         <link rel="alternate" hreflang="x-default" href="@Model.CanonicalUrl" />
     }
+}
+else
+{
+    <!-- Default meta tags -->
+    <title>@ViewData["Title"] - VersePress</title>
+    <meta name="description" content="VersePress - A modern bilingual blog platform for tech news and insights in English and Arabic" />
+    <meta name="keywords" content="blog, tech news, programming, web development, software engineering, bilingual, English, Arabic" />
+    <meta name="robots" content="index, follow" />
 }

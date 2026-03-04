@@ -14,10 +14,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>@ViewData["Title"] - VersePress</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    @* SEO Meta Tags - Can be overridden by individual pages *@
+    @await Html.PartialAsync("_MetaTags", ViewData["MetaTags"])
+    
+    @* Open Graph & Twitter Cards *@
+    @await Html.PartialAsync("_OpenGraph", ViewData["OpenGraph"])
+    
+    @* JSON-LD Structured Data *@
+    @await Html.PartialAsync("_JsonLd", ViewData["JsonLd"])
     
     @* Favicon *@
     <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
@@ -27,11 +33,17 @@
     @* Performance optimizations *@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     
-    @* SEO meta tags section - can be overridden by individual pages *@
+    @* Additional head content from pages *@
     @await RenderSectionAsync("Head", required: false)
+    
+    @* Google Analytics *@
+    @await Html.PartialAsync("_GoogleAnalytics")
     
     <script type="importmap"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />

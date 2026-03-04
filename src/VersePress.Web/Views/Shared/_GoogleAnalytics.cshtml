@@ -1,0 +1,20 @@
+@{
+    var gaId = ViewData["GoogleAnalyticsId"]?.ToString() ?? "G-1HD64LCW0Z";
+    var environment = Context.Request.Host.Host;
+    var isProduction = !environment.Contains("localhost") && !environment.Contains("127.0.0.1");
+}
+
+@if (isProduction)
+{
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=@gaId"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '@gaId', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
+}

@@ -12,6 +12,7 @@ public class BlogController : Controller
     private readonly IReactionService _reactionService;
     private readonly IViewCounterService _viewCounterService;
     private readonly ISearchService _searchService;
+    private readonly ISeoService _seoService;
     private readonly ILogger<BlogController> _logger;
 
     public BlogController(
@@ -20,6 +21,7 @@ public class BlogController : Controller
         IReactionService reactionService,
         IViewCounterService viewCounterService,
         ISearchService searchService,
+        ISeoService seoService,
         ILogger<BlogController> logger)
     {
         _blogPostService = blogPostService;
@@ -27,6 +29,7 @@ public class BlogController : Controller
         _reactionService = reactionService;
         _viewCounterService = viewCounterService;
         _searchService = searchService;
+        _seoService = seoService;
         _logger = logger;
     }
 
@@ -53,6 +56,15 @@ public class BlogController : Controller
                 var reaction = await _reactionService.GetUserReactionAsync(post.Id, userId);
                 userReaction = reaction?.ToString();
             }
+
+            // Generate SEO data
+            var baseUrl = $"{Request.Scheme}://{Request.Host}";
+            var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+            var language = currentCulture.StartsWith("ar") ? "ar" : "en";
+            
+            ViewData["MetaTags"] = await _seoService.GenerateMetaTagsAsync(post.Id, language, baseUrl);
+            ViewData["OpenGraph"] = await _seoService.GenerateOpenGraphTagsAsync(post.Id, language, baseUrl);
+            ViewData["JsonLd"] = await _seoService.GenerateJsonLdAsync(post.Id, language, baseUrl);
 
             var model = new BlogPostDetailViewModel
             {
