@@ -33,6 +33,34 @@ public class BlogController : Controller
         _logger = logger;
     }
 
+    [OutputCache(Duration = 300, VaryByQueryKeys = new[] { "page", "category", "tag" }, VaryByHeaderNames = new[] { "Accept-Language", "Cookie" })]
+    public async Task<IActionResult> Index(int page = 1, string? category = null, string? tag = null)
+    {
+        const int pageSize = 10;
+        
+        try
+        {
+            var posts = await _blogPostService.GetPublishedPostsAsync(page, pageSize);
+            
+            var model = new BlogIndexViewModel
+            {
+                Posts = posts.ToList(),
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalPages = 1, // TODO: Calculate from total count
+                FilterType = !string.IsNullOrEmpty(category) ? "category" : !string.IsNullOrEmpty(tag) ? "tag" : null,
+                FilterValue = category ?? tag
+            };
+
+            return View(model);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading blog index");
+            return View("Errors/Error");
+        }
+    }
+
     public async Task<IActionResult> Details(string slug)
     {
         try

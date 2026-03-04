@@ -1,0 +1,465 @@
+/* ============================================
+   VERSEPRESS SPACING UTILITIES
+   Margins, paddings, gaps, and layout spacing
+   ============================================ */
+
+/* ========== SPACING SCALE ========== */
+:root {
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;   /* 4px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 0.75rem;   /* 12px */
+  --spacing-4: 1rem;      /* 16px */
+  --spacing-5: 1.25rem;   /* 20px */
+  --spacing-6: 1.5rem;    /* 24px */
+  --spacing-7: 1.75rem;   /* 28px */
+  --spacing-8: 2rem;      /* 32px */
+  --spacing-10: 2.5rem;   /* 40px */
+  --spacing-12: 3rem;     /* 48px */
+  --spacing-16: 4rem;     /* 64px */
+  --spacing-20: 5rem;     /* 80px */
+  --spacing-24: 6rem;     /* 96px */
+}
+
+/* ========== CONTAINER SPACING ========== */
+.container {
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+  }
+}
+
+/* ========== SECTION SPACING ========== */
+.section {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+}
+
+.section-sm {
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+}
+
+.section-lg {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+
+@media (max-width: 767.98px) {
+  .section {
+    padding-top: var(--spacing-8);
+    padding-bottom: var(--spacing-8);
+  }
+  
+  .section-sm {
+    padding-top: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+  }
+  
+  .section-lg {
+    padding-top: var(--spacing-10);
+    padding-bottom: var(--spacing-10);
+  }
+}
+
+/* ========== CARD SPACING ========== */
+.card {
+  margin-bottom: var(--spacing-4);
+}
+
+.card-body {
+  padding: var(--spacing-6);
+}
+
+.card-header,
+.card-footer {
+  padding: var(--spacing-4) var(--spacing-6);
+}
+
+@media (max-width: 767.98px) {
+  .card-body {
+    padding: var(--spacing-4);
+  }
+  
+  .card-header,
+  .card-footer {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+}
+
+/* ========== FORM SPACING ========== */
+.form-group {
+  margin-bottom: var(--spacing-4);
+}
+
+.form-label {
+  margin-bottom: var(--spacing-2);
+}
+
+.form-text {
+  margin-top: var(--spacing-1);
+}
+
+.form-check {
+  margin-bottom: var(--spacing-4);
+}
+
+@media (max-width: 767.98px) {
+  .form-check {
+    margin-bottom: var(--spacing-3);
+  }
+}
+
+/* ========== BUTTON SPACING ========== */
+.btn {
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+.btn-sm {
+  padding: var(--spacing-1) var(--spacing-3);
+}
+
+.btn-lg {
+  padding: var(--spacing-3) var(--spacing-6);
+}
+
+.btn-group {
+  gap: var(--spacing-2);
+}
+
+/* ========== NAVBAR SPACING ========== */
+.navbar {
+  padding: var(--spacing-4) 0;
+}
+
+.navbar-nav {
+  gap: var(--spacing-2);
+}
+
+.navbar-nav .nav-link {
+  padding: var(--spacing-2) var(--spacing-4);
+}
+
+@media (max-width: 767.98px) {
+  .navbar {
+    padding: var(--spacing-3) 0;
+  }
+  
+  .navbar-nav {
+    margin-top: var(--spacing-4);
+    gap: var(--spacing-1);
+  }
+  
+  .navbar-nav .nav-link {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+}
+
+/* ========== FOOTER SPACING ========== */
+.footer .container > div {
+  padding: var(--spacing-6) 0;
+}
+
+@media (max-width: 767.98px) {
+  .footer .container > div {
+    padding: var(--spacing-4) 0;
+  }
+}
+
+.footer-nav .list-inline-item:not(:last-child) {
+  margin-right: var(--spacing-6);
+}
+
+@media (max-width: 767.98px) {
+  .footer-nav .list-inline-item:not(:last-child) {
+    margin-right: var(--spacing-4);
+  }
+}
+
+/* ========== BLOG POST SPACING ========== */
+.blog-post-header {
+  margin-bottom: var(--spacing-8);
+}
+
+.post-meta {
+  gap: var(--spacing-3);
+}
+
+@media (max-width: 767.98px) {
+  .post-meta {
+    gap: var(--spacing-2);
+  }
+}
+
+.blog-post-content img {
+  margin: var(--spacing-4) 0;
+}
+
+.blog-post-content pre {
+  padding: var(--spacing-4);
+  margin: var(--spacing-4) 0;
+}
+
+/* ========== COMMENT SPACING ========== */
+.comment-form textarea {
+  min-height: 100px;
+}
+
+@media (max-width: 767.98px) {
+  .comment-form textarea {
+    min-height: 80px;
+  }
+}
+
+.comment-replies {
+  margin-top: var(--spacing-4);
+  padding-left: var(--spacing-4);
+}
+
+@media (max-width: 767.98px) {
+  .comment-replies {
+    padding-left: var(--spacing-2);
+    margin-left: var(--spacing-2);
+  }
+}
+
+/* ========== NOTIFICATION SPACING ========== */
+.notification-item {
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+@media (max-width: 767.98px) {
+  .notification-item {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+}
+
+.notification-icon {
+  margin-right: var(--spacing-3);
+}
+
+@media (max-width: 767.98px) {
+  .notification-icon {
+    margin-right: var(--spacing-2);
+  }
+}
+
+/* ========== MOBILE SIDEBAR SPACING ========== */
+.mobile-sidebar-header {
+  padding: var(--spacing-5) var(--spacing-6);
+}
+
+.mobile-sidebar-search {
+  padding: var(--spacing-4) var(--spacing-6);
+}
+
+.mobile-sidebar-content {
+  padding: var(--spacing-4) 0;
+}
+
+.mobile-sidebar-section {
+  margin-bottom: var(--spacing-6);
+}
+
+.mobile-sidebar-section-title {
+  padding: 0 var(--spacing-6);
+  margin-bottom: var(--spacing-3);
+}
+
+.mobile-sidebar-link {
+  padding: var(--spacing-3) var(--spacing-6);
+}
+
+.mobile-sidebar-link i {
+  margin-right: var(--spacing-4);
+}
+
+.mobile-sidebar-footer {
+  padding: var(--spacing-6);
+}
+
+.mobile-sidebar-controls {
+  margin-bottom: var(--spacing-4);
+}
+
+.mobile-sidebar-language {
+  gap: var(--spacing-2);
+}
+
+/* ========== ERROR PAGE SPACING ========== */
+.error-page {
+  padding: var(--spacing-8) 0;
+}
+
+.error-code {
+  margin-bottom: var(--spacing-4);
+}
+
+.error-title {
+  margin-bottom: var(--spacing-4);
+}
+
+.error-message {
+  margin-bottom: var(--spacing-8);
+}
+
+.error-actions {
+  gap: var(--spacing-4);
+}
+
+@media (max-width: 767.98px) {
+  .error-page {
+    padding: var(--spacing-6) 0;
+  }
+  
+  .error-message {
+    margin-bottom: var(--spacing-6);
+  }
+}
+
+/* ========== RESPONSIVE SPACING UTILITIES ========== */
+@media (max-width: 767.98px) {
+  .mb-mobile-2 {
+    margin-bottom: var(--spacing-2) !important;
+  }
+  
+  .mb-mobile-3 {
+    margin-bottom: var(--spacing-3) !important;
+  }
+  
+  .mb-mobile-4 {
+    margin-bottom: var(--spacing-4) !important;
+  }
+  
+  .mt-mobile-2 {
+    margin-top: var(--spacing-2) !important;
+  }
+  
+  .mt-mobile-3 {
+    margin-top: var(--spacing-3) !important;
+  }
+  
+  .mt-mobile-4 {
+    margin-top: var(--spacing-4) !important;
+  }
+  
+  .px-mobile-2 {
+    padding-left: var(--spacing-2) !important;
+    padding-right: var(--spacing-2) !important;
+  }
+  
+  .px-mobile-3 {
+    padding-left: var(--spacing-3) !important;
+    padding-right: var(--spacing-3) !important;
+  }
+  
+  .py-mobile-2 {
+    padding-top: var(--spacing-2) !important;
+    padding-bottom: var(--spacing-2) !important;
+  }
+  
+  .py-mobile-3 {
+    padding-top: var(--spacing-3) !important;
+    padding-bottom: var(--spacing-3) !important;
+  }
+}
+
+/* ========== GAP UTILITIES ========== */
+.gap-1 {
+  gap: var(--spacing-1);
+}
+
+.gap-2 {
+  gap: var(--spacing-2);
+}
+
+.gap-3 {
+  gap: var(--spacing-3);
+}
+
+.gap-4 {
+  gap: var(--spacing-4);
+}
+
+.gap-5 {
+  gap: var(--spacing-5);
+}
+
+.gap-6 {
+  gap: var(--spacing-6);
+}
+
+/* ========== STACK SPACING ========== */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-1 > * + * {
+  margin-top: var(--spacing-1);
+}
+
+.stack-2 > * + * {
+  margin-top: var(--spacing-2);
+}
+
+.stack-3 > * + * {
+  margin-top: var(--spacing-3);
+}
+
+.stack-4 > * + * {
+  margin-top: var(--spacing-4);
+}
+
+.stack-6 > * + * {
+  margin-top: var(--spacing-6);
+}
+
+/* ========== INLINE SPACING ========== */
+.inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inline-1 > * + * {
+  margin-left: var(--spacing-1);
+}
+
+.inline-2 > * + * {
+  margin-left: var(--spacing-2);
+}
+
+.inline-3 > * + * {
+  margin-left: var(--spacing-3);
+}
+
+.inline-4 > * + * {
+  margin-left: var(--spacing-4);
+}
+
+/* RTL Support for inline spacing */
+body.rtl .inline-1 > * + *,
+body.rtl .inline-2 > * + *,
+body.rtl .inline-3 > * + *,
+body.rtl .inline-4 > * + * {
+  margin-left: 0;
+  margin-right: var(--spacing-2);
+}
+
+body.rtl .inline-1 > * + * {
+  margin-right: var(--spacing-1);
+}
+
+body.rtl .inline-3 > * + * {
+  margin-right: var(--spacing-3);
+}
+
+body.rtl .inline-4 > * + * {
+  margin-right: var(--spacing-4);
+}

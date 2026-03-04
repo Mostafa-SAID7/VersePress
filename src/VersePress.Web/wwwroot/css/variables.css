@@ -1,0 +1,132 @@
+/* ============================================
+   VERSEPRESS CSS VARIABLES
+   Global design tokens for colors, shadows, and effects
+   ============================================ */
+
+:root {
+  /* ========== BRAND COLORS (GREEN) ========== */
+  --green-50: #ecfdf5;
+  --green-100: #d1fae5;
+  --green-200: #a7f3d0;
+  --green-300: #6ee7b7;
+  --green-400: #34d399;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --green-700: #047857;
+  --green-800: #065f46;
+  --green-900: #064e3b;
+  --green-950: #022c22;
+
+  /* ========== NEUTRAL COLORS ========== */
+  --neutral-50:  #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+
+  /* ========== STATUS COLORS ========== */
+  --success-500: #10b981;
+  --error-500:   #ef4444;
+  --warning-500: #f59e0b;
+  --info-500: #10b981;
+  
+  /* ========== SEMANTIC TOKENS - LIGHT THEME ========== */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: var(--neutral-600);
+  --color-text-muted: var(--neutral-500);
+  --color-border: var(--neutral-200);
+  --color-primary: var(--green-600);
+  --color-primary-hover: var(--green-700);
+  --color-primary-active: var(--green-800);
+  --color-on-primary: #ffffff;
+  --color-link: var(--green-600);
+
+  /* ========== LEGACY MAPPINGS ========== */
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--neutral-50);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --link-color: var(--color-link);
+  --link-hover-color: var(--green-700);
+  --navbar-bg: var(--color-surface);
+  --footer-bg: var(--neutral-50);
+  --footer-text: var(--color-text-secondary);
+  --card-bg: var(--color-surface);
+  --input-bg: var(--color-surface);
+  --input-border: var(--color-border);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  /* ========== COMPONENT MAPPINGS ========== */
+  --primary: var(--green-600);
+  --primary-hover: var(--green-700);
+  --primary-contrast: #ffffff;
+  --success: var(--success-500);
+  --error: var(--error-500);
+  --warning: var(--warning-500);
+  --info: var(--green-600);
+  --success-bg: #d1fae5;
+  --error-bg: #fee2e2;
+  --warning-bg: #fef3c7;
+  --warning-text: #92400e;
+  --info-bg: #d1fae5;
+  --surface: var(--color-surface);
+  --text-muted: var(--color-text-muted);
+
+  /* ========== FOCUS RINGS ========== */
+  --focus-ring-primary: rgba(16, 185, 129, 0.25);
+  --focus-ring-error: rgba(239, 68, 68, 0.25);
+}
+
+/* ========== DARK THEME ========== */
+[data-theme="dark"] {
+  /* Background Layers - Dark Navy */
+  --color-bg: #0a0e1a;
+  --color-surface: #151b2b;
+  --color-surface-elevated: #1a1f2e;
+  --color-text-primary: #e6e8eb;
+  --color-text-secondary: #8b92a8;
+  --color-text-muted: #6b7280;
+  --color-border: #1f2937;
+
+  /* Primary - Green accent for dark theme */
+  --color-primary: var(--green-400);
+  --color-primary-hover: var(--green-300);
+  --color-primary-active: var(--green-500);
+  --color-on-primary: #0a0e1a;
+  --color-link: var(--green-400);
+
+  /* Legacy mappings for dark theme */
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-surface-elevated);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --link-color: var(--color-link);
+  --link-hover-color: var(--green-300);
+  --navbar-bg: var(--color-surface);
+  --footer-bg: var(--color-surface);
+  --footer-text: var(--color-text-secondary);
+  --card-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  /* Component mappings for dark theme */
+  --primary: var(--green-400);
+  --primary-hover: var(--green-300);
+  --primary-contrast: #0a0e1a;
+  --surface: var(--color-surface);
+  --text-muted: var(--color-text-muted);
+  --info: var(--green-400);
+  --info-bg: rgba(16, 185, 129, 0.1);
+  --success-bg: rgba(16, 185, 129, 0.1);
+}

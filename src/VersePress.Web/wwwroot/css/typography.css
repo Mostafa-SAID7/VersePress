@@ -1,0 +1,421 @@
+/* ============================================
+   VERSEPRESS TYPOGRAPHY
+   Font families, sizes, weights, and line heights
+   ============================================ */
+
+/* ========== BASE TYPOGRAPHY ========== */
+html {
+  font-size: 14px;
+  font-family: "Exo", sans-serif;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: "Exo", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ========== HEADINGS ========== */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+h6, .h6 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ========== DISPLAY HEADINGS ========== */
+.display-1 {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.display-2 {
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.display-3 {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ========== TEXT STYLES ========== */
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.text-small {
+  font-size: 0.875rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+/* ========== FONT WEIGHTS ========== */
+.fw-light {
+  font-weight: 300;
+}
+
+.fw-normal {
+  font-weight: 400;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fw-extrabold {
+  font-weight: 800;
+}
+
+/* ========== LINE HEIGHTS ========== */
+.lh-1 {
+  line-height: 1;
+}
+
+.lh-sm {
+  line-height: 1.25;
+}
+
+.lh-base {
+  line-height: 1.5;
+}
+
+.lh-lg {
+  line-height: 1.8;
+}
+
+/* ========== LETTER SPACING ========== */
+.ls-tight {
+  letter-spacing: -0.025em;
+}
+
+.ls-normal {
+  letter-spacing: 0;
+}
+
+.ls-wide {
+  letter-spacing: 0.025em;
+}
+
+.ls-wider {
+  letter-spacing: 0.05em;
+}
+
+.ls-widest {
+  letter-spacing: 0.1em;
+}
+
+/* ========== TEXT UTILITIES ========== */
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-break {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ========== RESPONSIVE TYPOGRAPHY ========== */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1, .h1, .display-4 {
+    font-size: 2rem;
+  }
+  
+  h2, .h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3, .h3 {
+    font-size: 1.5rem;
+  }
+  
+  h4, .h4 {
+    font-size: 1.25rem;
+  }
+  
+  h5, .h5 {
+    font-size: 1.1rem;
+  }
+  
+  h6, .h6 {
+    font-size: 1rem;
+  }
+  
+  .display-1 {
+    font-size: 3.5rem;
+  }
+  
+  .display-2 {
+    font-size: 3rem;
+  }
+  
+  .display-3 {
+    font-size: 2.5rem;
+  }
+  
+  .lead {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* ========== BLOG CONTENT TYPOGRAPHY ========== */
+.blog-post-content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 767.98px) {
+  .blog-post-content {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3,
+.blog-post-content h4,
+.blog-post-content h5,
+.blog-post-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-content code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: var(--bg-secondary);
+  border-radius: 0.25rem;
+}
+
+.blog-post-content pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 767.98px) {
+  .blog-post-content pre {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ========== NAVBAR TYPOGRAPHY ========== */
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+
+.navbar-brand-text {
+  font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+/* ========== FOOTER TYPOGRAPHY ========== */
+.footer-copyright {
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  font-weight: 500;
+}
+
+/* ========== FORM TYPOGRAPHY ========== */
+.form-label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-text {
+  font-size: 0.875rem;
+}
+
+.form-control,
+.form-select {
+  font-size: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .form-control,
+  .form-select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* ========== BUTTON TYPOGRAPHY ========== */
+.btn {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.btn-sm {
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  font-size: 1.125rem;
+}
+
+/* ========== CARD TYPOGRAPHY ========== */
+.card-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.card-subtitle {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ========== ERROR PAGE TYPOGRAPHY ========== */
+.error-code {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.error-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.error-message {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 767.98px) {
+  .error-code {
+    font-size: 4rem;
+  }
+  
+  .error-title {
+    font-size: 1.5rem;
+  }
+  
+  .error-message {
+    font-size: 1rem;
+  }
+}
+
+/* ========== PREVENT TEXT SIZE ADJUSTMENT ========== */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}

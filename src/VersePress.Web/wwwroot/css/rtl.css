@@ -1,0 +1,309 @@
+/* ============================================
+   VERSEPRESS RTL (RIGHT-TO-LEFT) SUPPORT
+   Styles for Arabic and other RTL languages
+   ============================================ */
+
+/* ========== BASE RTL ========== */
+body.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ========== NAVBAR RTL ========== */
+body.rtl .navbar-nav {
+  flex-direction: row-reverse;
+}
+
+body.rtl .navbar-nav .nav-link i {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+body.rtl .navbar-logo {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+body.rtl .navbar-collapse {
+  justify-content: flex-start;
+}
+
+body.rtl .language-switcher {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ========== FOOTER RTL ========== */
+body.rtl .footer-nav .list-inline-item:not(:last-child) {
+  margin-right: 0;
+  margin-left: 1.5rem;
+}
+
+body.rtl .footer .d-flex {
+  flex-direction: row-reverse;
+}
+
+/* ========== SPACING RTL ========== */
+body.rtl .me-1 {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+body.rtl .ms-1 {
+  margin-left: 0 !important;
+  margin-right: 0.25rem !important;
+}
+
+body.rtl .me-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+body.rtl .ms-2 {
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
+}
+
+body.rtl .me-3 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+body.rtl .ms-3 {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+
+/* ========== TOASTER RTL ========== */
+body.rtl .toaster-container {
+  right: auto;
+  left: 20px;
+}
+
+body.rtl .toast-item {
+  transform: translateX(-400px);
+  border-left: none;
+  border-right: 4px solid;
+}
+
+body.rtl .toast-item.show {
+  transform: translateX(0);
+}
+
+body.rtl .toast-item.hiding {
+  transform: translateX(-400px);
+}
+
+body.rtl .toast-item.success { border-right-color: var(--success-500); }
+body.rtl .toast-item.error { border-right-color: var(--error-500); }
+body.rtl .toast-item.warning { border-right-color: var(--warning-500); }
+body.rtl .toast-item.info { border-right-color: var(--info-500); }
+
+body.rtl .toast-icon {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+body.rtl .toast-close {
+  margin-left: 0;
+  margin-right: 12px;
+}
+
+/* ========== FORM INPUTS RTL ========== */
+body.rtl .form-check {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+body.rtl .form-check-label {
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+
+body.rtl .form-text {
+  padding-left: 0;
+  padding-right: 1.75rem;
+}
+
+body.rtl .badge-component i {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+/* ========== NOTIFICATION RTL ========== */
+body.rtl .notification-dropdown {
+  right: auto;
+  left: 0;
+}
+
+body.rtl .notification-badge {
+  right: auto;
+  left: 0;
+}
+
+body.rtl .notification-icon {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+body.rtl .notification-toast {
+  right: auto;
+  left: 20px;
+  transform: translateX(-400px);
+}
+
+body.rtl .notification-toast.show {
+  transform: translateX(0);
+}
+
+body.rtl .notification-toast-icon {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+body.rtl .notification-toast-close {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+body.rtl .mark-read-btn {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+/* ========== MOBILE SIDEBAR RTL ========== */
+body.rtl .mobile-sidebar {
+  right: auto;
+  left: -100%;
+  box-shadow: 2px 0 8px var(--shadow-color);
+}
+
+body.rtl .mobile-sidebar.show {
+  left: 0;
+  right: auto;
+}
+
+body.rtl .mobile-sidebar-logo {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+body.rtl .mobile-sidebar-link i {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* ========== SIGNALR STATUS RTL ========== */
+body.rtl .signalr-status {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+@media (max-width: 767.98px) {
+  body.rtl .signalr-status {
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+}
+
+/* ========== COMMENT RTL ========== */
+body.rtl .comment-replies {
+  padding-left: 0;
+  padding-right: 1rem;
+  border-left: none;
+  border-right: 2px solid var(--border-color);
+}
+
+@media (max-width: 767.98px) {
+  body.rtl .comment-replies {
+    padding-right: 0.5rem;
+    margin-right: 0.5rem;
+    margin-left: 0;
+  }
+}
+
+/* ========== INLINE SPACING RTL ========== */
+body.rtl .inline-1 > * + *,
+body.rtl .inline-2 > * + *,
+body.rtl .inline-3 > * + *,
+body.rtl .inline-4 > * + * {
+  margin-left: 0;
+}
+
+body.rtl .inline-1 > * + * {
+  margin-right: var(--spacing-1);
+}
+
+body.rtl .inline-2 > * + * {
+  margin-right: var(--spacing-2);
+}
+
+body.rtl .inline-3 > * + * {
+  margin-right: var(--spacing-3);
+}
+
+body.rtl .inline-4 > * + * {
+  margin-right: var(--spacing-4);
+}
+
+/* ========== MOBILE RTL ADJUSTMENTS ========== */
+@media (max-width: 767.98px) {
+  body.rtl .toaster-container {
+    left: 10px;
+    right: 10px;
+  }
+  
+  body.rtl .notification-dropdown {
+    left: 10px;
+    right: auto;
+  }
+  
+  body.rtl .notification-toast {
+    left: 10px;
+    right: auto;
+  }
+  
+  body.rtl .notification-icon {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+  
+  body.rtl .notification-toast-icon {
+    margin-right: 0;
+    margin-left: 0.75rem;
+  }
+}
+
+/* ========== SMOOTH TRANSITIONS ========== */
+body {
+  transition: direction 0.3s ease;
+}
+
+/* ========== BOOTSTRAP OVERRIDES RTL ========== */
+body.rtl .float-end {
+  float: left !important;
+}
+
+body.rtl .float-start {
+  float: right !important;
+}
+
+body.rtl .text-end {
+  text-align: left !important;
+}
+
+body.rtl .text-start {
+  text-align: right !important;
+}
+
+body.rtl .border-end {
+  border-right: 0 !important;
+  border-left: 1px solid var(--border-color) !important;
+}
+
+body.rtl .border-start {
+  border-left: 0 !important;
+  border-right: 1px solid var(--border-color) !important;
+}

@@ -1,0 +1,285 @@
+/* ============================================
+   VERSEPRESS RESPONSIVE STYLES
+   Mobile-first responsive design utilities
+   ============================================ */
+
+/* ========== MOBILE: < 768px ========== */
+@media (max-width: 767.98px) {
+  /* Container */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Navigation */
+  .navbar-collapse {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Full-width buttons on mobile */
+  .btn-block-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Larger touch targets on mobile */
+  .btn, .nav-link {
+    min-height: 48px;
+    font-size: 1rem;
+  }
+  
+  /* Card spacing */
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .card-img-top {
+    height: 160px;
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Hide desktop-only elements */
+  .d-mobile-none {
+    display: none !important;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 1rem 0;
+    font-size: 0.875rem;
+  }
+  
+  .footer-copyright {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-nav {
+    width: 100%;
+  }
+  
+  .footer-nav .list-inline {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-nav .list-inline-item:not(:last-child) {
+    margin-right: 1rem;
+  }
+  
+  /* Optimize form inputs for mobile */
+  .form-control, .form-select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Reduce animations on mobile */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Optimize images for mobile */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+  
+  /* Reduce box shadows on mobile */
+  .box-shadow {
+    box-shadow: 0 .125rem .375rem var(--shadow-color);
+  }
+  
+  /* Disable hover effects on mobile */
+  .btn:hover,
+  .nav-link:hover,
+  .card:hover {
+    transform: none;
+  }
+  
+  /* Simplify shadows on mobile */
+  .card,
+  .navbar {
+    box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  
+  /* Optimize scrolling on mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Text alignment */
+  .text-mobile-center {
+    text-align: center !important;
+  }
+  
+  .w-mobile-100 {
+    width: 100% !important;
+  }
+}
+
+/* ========== TABLET: 768px - 1024px ========== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  /* Two-column layout for cards */
+  .col-tablet-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .card-img-top {
+    height: 180px;
+  }
+  
+  /* Adjust spacing */
+  .mb-tablet-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Improve readability */
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .blog-post-content {
+    font-size: 1.05rem;
+  }
+}
+
+/* ========== DESKTOP: > 1024px ========== */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1140px;
+  }
+  
+  /* Three-column layout for cards */
+  .col-desktop-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  
+  .card-img-top {
+    height: 200px;
+  }
+  
+  /* Hover effects only on desktop */
+  .btn:hover, .nav-link:hover {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .5rem 1rem var(--shadow-color);
+  }
+}
+
+/* ========== LARGE SCREENS: > 1400px ========== */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* ========== TOUCH DEVICE OPTIMIZATIONS ========== */
+.touch-device .btn,
+.touch-device .nav-link,
+.touch-device .card {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+.touch-active {
+  opacity: 0.7;
+  transform: scale(0.98);
+}
+
+/* ========== TOUCH-FRIENDLY TARGETS ========== */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn, .nav-link, .navbar-toggler {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+}
+
+/* ========== LAZY LOADING IMAGES ========== */
+img.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img.lazy.loaded {
+  opacity: 1;
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .navbar,
+  .footer,
+  .post-reactions,
+  .post-share,
+  .comment-form,
+  .mobile-sidebar,
+  .mobile-sidebar-overlay {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .card {
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

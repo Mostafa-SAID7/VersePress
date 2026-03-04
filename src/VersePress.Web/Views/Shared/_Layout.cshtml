@@ -52,8 +52,18 @@
     {
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" />
     }
+    @* Global CSS Variables, Typography, and Spacing *@
+    <link rel="stylesheet" href="~/css/variables.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/typography.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/spacing.css" asp-append-version="true" />
+    @* Main Styles *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/components.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    @if (isRtl)
+    {
+        <link rel="stylesheet" href="~/css/rtl.css" asp-append-version="true" />
+    }
     <link rel="stylesheet" href="~/VersePress.Web.styles.css" asp-append-version="true" />
 </head>
 <body class="@(isRtl ? "rtl" : "ltr") theme-@theme" data-theme="@theme">

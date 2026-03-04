@@ -263,5 +263,10 @@ C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\VersePress.Web.genruntimeconfig.cache
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\ref\VersePress.Web.dll
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\5mvn2l8spd-j8clw6a96c.gz
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\5mvn2l8spd-lf806zi86t.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\3r8n1kmtcw-i5nw7vmsfs.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\i84gugs6dp-4an9nrpc8j.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\6chriylpa8-5ipweew5fc.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\yllc18jbzx-fnet1kd3hf.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\nuegw4fhge-ige9lv5it2.gz
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Web\obj\Debug\net9.0\compressed\rwcovrtrn1-9uk55k0yiu.gz
