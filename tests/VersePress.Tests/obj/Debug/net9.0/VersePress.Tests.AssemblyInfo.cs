@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VersePress.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+702d81a33dfb4d14dc7f394f222276dc0ce04b90")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47577fb780b70da904bd7b21c4cea0be84a59679")]
 [assembly: System.Reflection.AssemblyProductAttribute("VersePress.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VersePress.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
