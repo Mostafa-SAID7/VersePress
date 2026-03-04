@@ -65,7 +65,9 @@ if (builder.Environment.IsProduction())
 }
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
 
 // Add WebOptimizer for bundling and minification
 builder.Services.AddWebOptimizer(pipeline =>
