@@ -3,23 +3,38 @@
 @inject VersePress.Application.Interfaces.ISeoService SeoService
 
 @{
-    ViewData["Title"] = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.Post.TitleAr : Model.Post.TitleEn;
+    ViewData["Title"] = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model?.Post?.TitleAr : Model?.Post?.TitleEn;
     var currentLanguage = CultureInfo.CurrentCulture.Name;
     var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}";
     
-    // Generate SEO data
-    var metaTags = await SeoService.GenerateMetaTagsAsync(Model.Post.Id, currentLanguage, baseUrl);
-    var openGraph = await SeoService.GenerateOpenGraphTagsAsync(Model.Post.Id, currentLanguage, baseUrl);
-    var jsonLd = await SeoService.GenerateJsonLdAsync(Model.Post.Id, currentLanguage, baseUrl);
+    // Generate SEO data only if post is available
+    if (Model?.Post != null)
+    {
+        var metaTags = await SeoService.GenerateMetaTagsAsync(Model.Post.Id, currentLanguage, baseUrl);
+        var openGraph = await SeoService.GenerateOpenGraphTagsAsync(Model.Post.Id, currentLanguage, baseUrl);
+        var jsonLd = await SeoService.GenerateJsonLdAsync(Model.Post.Id, currentLanguage, baseUrl);
+        ViewData["MetaTags"] = metaTags;
+        ViewData["OpenGraph"] = openGraph;
+        ViewData["JsonLd"] = jsonLd;
+    }
 }
 
 @section Head {
     @* Include SEO partial views *@
-    <partial name="_MetaTags" model="metaTags" />
-    <partial name="_OpenGraph" model="openGraph" />
-    <partial name="_JsonLd" model="jsonLd" />
+    @if (Model?.Post != null)
+    {
+        <partial name="Seo/_MetaTags" model="@ViewData["MetaTags"]" />
+        <partial name="Seo/_OpenGraph" model="@ViewData["OpenGraph"]" />
+        <partial name="Seo/_JsonLd" model="@ViewData["JsonLd"]" />
+    }
 }
 
+<div class="container mt-5">
+    @* Error Boundary - Show error if post loading failed *@
+    <partial name="Errors/_ErrorBoundary" />
+    
+    @if (string.IsNullOrEmpty(ViewData["ErrorMessage"] as string) && Model?.Post != null)
+    {
 <article class="blog-post">
     <header class="blog-post-header mb-4">
         <h1 class="display-4">@(CultureInfo.CurrentCulture.Name.StartsWith("ar") ? Model.Post.TitleAr : Model.Post.TitleEn)</h1>
@@ -181,6 +196,8 @@
         </div>
     </section>
 }
+    }
+</div>
 
 @section Scripts {
     <script>

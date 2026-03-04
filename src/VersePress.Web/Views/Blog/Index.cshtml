@@ -6,9 +6,12 @@
 }
 
 <div class="container mt-5">
+    @* Error Boundary - Show error if data loading failed *@
+    <partial name="Errors/_ErrorBoundary" />
+    
     <div class="row">
         <div class="col-12">
-            @if (!string.IsNullOrEmpty(Model.FilterType))
+            @if (!string.IsNullOrEmpty(Model?.FilterType))
             {
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -21,7 +24,7 @@
             
             <h1 class="display-4 mb-4">@ViewData["Title"]</h1>
             
-            @if (!string.IsNullOrEmpty(Model.FilterValue))
+            @if (!string.IsNullOrEmpty(Model?.FilterValue))
             {
                 <p class="lead text-muted mb-4">
                     Showing posts for @(Model.FilterType?.ToLower() ?? "filter"): <strong>@Model.FilterValue</strong>
@@ -30,8 +33,10 @@
         </div>
     </div>
     
+    @if (string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+    {
     <div class="row">
-        @if (Model.Posts != null && Model.Posts.Any())
+        @if (Model?.Posts != null && Model.Posts.Any())
         {
             @foreach (var post in Model.Posts)
             {
@@ -79,7 +84,7 @@
         }
     </div>
     
-    @if (Model.TotalPages > 1)
+    @if (Model?.TotalPages > 1)
     {
         <nav aria-label="Page navigation" class="mt-4">
             <ul class="pagination justify-content-center">
@@ -91,5 +96,6 @@
                 }
             </ul>
         </nav>
+    }
     }
 </div>

@@ -1,0 +1,37 @@
+@*
+    Error Boundary Component - Displays error messages gracefully
+    Usage: Check ViewData["ErrorMessage"] before rendering critical sections
+    
+    Example in controller:
+    try {
+        // risky operation
+    } catch (Exception ex) {
+        ViewData["ErrorMessage"] = "Failed to load data";
+        return View();
+    }
+*@
+
+@{
+    var errorMessage = ViewData["ErrorMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger border-danger" role="alert">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-exclamation-triangle-fill me-2 icon-md"></i>
+            <div>
+                <h5 class="alert-heading mb-1">Something went wrong</h5>
+                <p class="mb-0">@errorMessage</p>
+                <div class="mt-3">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-outline-danger">
+                        <i class="bi bi-house-door me-1"></i>Go to Home
+                    </a>
+                    <button onclick="window.location.reload()" class="btn btn-sm btn-outline-secondary ms-2">
+                        <i class="bi bi-arrow-clockwise me-1"></i>Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

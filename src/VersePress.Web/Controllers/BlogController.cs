@@ -57,7 +57,14 @@ public class BlogController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading blog index");
-            return View("Errors/Error");
+            ViewData["ErrorMessage"] = "Unable to load blog posts. Please try again later.";
+            return View(new BlogIndexViewModel
+            {
+                Posts = new List<Application.DTOs.BlogPostDto>(),
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalPages = 0
+            });
         }
     }
 
@@ -108,7 +115,8 @@ public class BlogController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading blog post: {Slug}", slug);
-            return View("Error");
+            ViewData["ErrorMessage"] = "Unable to load this blog post. Please try again later.";
+            return View("Errors/Error");
         }
     }
 
@@ -165,7 +173,15 @@ public class BlogController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error searching posts: {Query}", q);
-            return View("Error");
+            ViewData["ErrorMessage"] = "Unable to perform search. Please try again later.";
+            return View(new SearchResultsViewModel
+            {
+                Query = q,
+                Results = new List<Application.DTOs.BlogPostDto>(),
+                TotalResults = 0,
+                CurrentPage = page,
+                TotalPages = 0
+            });
         }
     }
 }
