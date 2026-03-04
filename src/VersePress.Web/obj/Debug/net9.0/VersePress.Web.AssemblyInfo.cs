@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VersePress.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70842e76f94e976fce1654d20ed057ce59dfd2e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35eac59b998eec247aa2227df3198002217f2111")]
 [assembly: System.Reflection.AssemblyProductAttribute("VersePress.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VersePress.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

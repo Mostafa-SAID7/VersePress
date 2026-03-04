@@ -48,6 +48,7 @@
         // Apply theme to document
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
+            document.body.setAttribute('data-theme', theme);
             document.body.classList.remove('theme-light', 'theme-dark');
             document.body.classList.add(`theme-${theme}`);
             
@@ -69,20 +70,29 @@
             localStorage.setItem('theme', theme);
         }
 
-        // Initialize theme on page load
-        const currentTheme = getCurrentTheme();
-        applyTheme(currentTheme);
+        // Initialize theme immediately
+        const initialTheme = getCurrentTheme();
+        applyTheme(initialTheme);
 
-        // Toggle theme on button click
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', function() {
-                const currentTheme = getCurrentTheme();
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
-                setThemeCookie(newTheme);
-                applyTheme(newTheme);
-            });
+        // Setup toggle button when DOM is ready
+        function setupToggleButton() {
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function() {
+                    const currentTheme = getCurrentTheme();
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    
+                    setThemeCookie(newTheme);
+                    applyTheme(newTheme);
+                });
+            }
+        }
+
+        // Try to setup immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupToggleButton);
+        } else {
+            setupToggleButton();
         }
     })();
 </script>

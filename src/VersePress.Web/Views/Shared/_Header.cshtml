@@ -1,0 +1,50 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/favicon.svg" alt="VersePress Logo" class="navbar-logo me-2" />
+                <span class="navbar-brand-text">VersePress</span>
+            </a>
+            <button class="navbar-toggler touch-target" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent"
+                    aria-expanded="false" aria-label="@Localizer["ToggleNavigation"]">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark touch-target" asp-area="" asp-controller="Home" asp-action="Index">
+                            <i class="bi bi-house-door"></i> @Localizer["Home"]
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark touch-target" asp-area="" asp-controller="Blog" asp-action="Index">
+                            <i class="bi bi-newspaper"></i> Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark touch-target" asp-area="" asp-controller="Home" asp-action="About">
+                            <i class="bi bi-info-circle"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark touch-target" asp-area="" asp-controller="Home" asp-action="Contact">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark touch-target" asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <i class="bi bi-shield-check"></i> @Localizer["Privacy"]
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center flex-column flex-md-row mt-2 mt-md-0">
+                    <partial name="_ThemeToggle" />
+                    <partial name="_LanguageSwitcher" />
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
