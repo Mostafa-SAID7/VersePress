@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  font-family: "Exo", sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -49,6 +50,7 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  font-family: "Exo", sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
