@@ -16,31 +16,22 @@
                             <form asp-action="Login" method="post">
                                 <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "Email", 
-                                    Name = "Email", 
-                                    Label = "Email Address", 
-                                    Type = "email", 
-                                    Required = true,
-                                    Autofocus = true,
-                                    Value = Model?.Email
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email" autofocus required />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "Password", 
-                                    Name = "Password", 
-                                    Label = "Password", 
-                                    Type = "password", 
-                                    Required = true,
-                                    Value = Model?.Password
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="form-label">Password <span class="text-danger">*</span></label>
+                                    <input asp-for="Password" class="form-control" type="password" placeholder="Enter your password" required />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
                                 
-                                <partial name="Components/_Checkbox" model='new { 
-                                    Id = "RememberMe", 
-                                    Name = "RememberMe", 
-                                    Label = "Remember me",
-                                    Checked = Model?.RememberMe ?? false
-                                }' />
+                                <div class="mb-3 form-check">
+                                    <input asp-for="RememberMe" class="form-check-input" type="checkbox" />
+                                    <label asp-for="RememberMe" class="form-check-label">Remember me</label>
+                                </div>
                                 
                                 <div class="d-grid mt-4">
                                     <button type="submit" class="btn btn-primary btn-lg">Login</button>

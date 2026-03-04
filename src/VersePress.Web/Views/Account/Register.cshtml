@@ -16,58 +16,44 @@
                             <form asp-action="Register" method="post">
                                 <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "FullName", 
-                                    Name = "FullName", 
-                                    Label = "Full Name", 
-                                    Type = "text", 
-                                    Required = true,
-                                    Value = Model?.FullName
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="FullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input asp-for="FullName" class="form-control" type="text" placeholder="Enter your full name" required />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "UserName", 
-                                    Name = "UserName", 
-                                    Label = "Username", 
-                                    Type = "text", 
-                                    Required = true,
-                                    Value = Model?.UserName
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="UserName" class="form-label">Username <span class="text-danger">*</span></label>
+                                    <input asp-for="UserName" class="form-control" type="text" placeholder="Choose a username" required />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "Email", 
-                                    Name = "Email", 
-                                    Label = "Email Address", 
-                                    Type = "email", 
-                                    Required = true,
-                                    Value = Model?.Email
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email" required />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "Password", 
-                                    Name = "Password", 
-                                    Label = "Password", 
-                                    Type = "password", 
-                                    Required = true,
-                                    Value = Model?.Password
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="form-label">Password <span class="text-danger">*</span></label>
+                                    <input asp-for="Password" class="form-control" type="password" placeholder="Create a strong password" required />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                    <small class="form-text text-muted">
+                                        Password must be at least 8 characters with uppercase, lowercase, number, and special character.
+                                    </small>
+                                </div>
                                 
-                                <partial name="Components/_TextInput" model='new { 
-                                    Id = "ConfirmPassword", 
-                                    Name = "ConfirmPassword", 
-                                    Label = "Confirm Password", 
-                                    Type = "password", 
-                                    Required = true,
-                                    Value = Model?.ConfirmPassword
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="ConfirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                    <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="Confirm your password" required />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
                                 
-                                <partial name="Components/_TextArea" model='new { 
-                                    Id = "Bio", 
-                                    Name = "Bio", 
-                                    Label = "Bio (Optional)", 
-                                    Rows = 3,
-                                    Value = Model?.Bio
-                                }' />
+                                <div class="mb-3">
+                                    <label asp-for="Bio" class="form-label">Bio (Optional)</label>
+                                    <textarea asp-for="Bio" class="form-control" rows="3" placeholder="Tell us about yourself"></textarea>
+                                    <span asp-validation-for="Bio" class="text-danger"></span>
+                                </div>
                                 
                                 <div class="d-grid mt-4">
                                     <button type="submit" class="btn btn-primary btn-lg">Register</button>
