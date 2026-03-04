@@ -11,34 +11,36 @@ html {
 
 /* Theme CSS Variables */
 :root {
-  /* ========== BRAND (YELLOW) ========== */
-  --yellow-50:  #fefce8;
-  --yellow-100: #fef9c2;
-  --yellow-200: #fff085;
-  --yellow-300: #ffdf20;
-  --yellow-400: #fdc700;
-  --yellow-500: #f0b100;
-  --yellow-600: #d08700;
-  --yellow-700: #a65f00;
-  --yellow-800: #894b00;
-  --yellow-900: #733e0a;
-  --yellow-950: #432004;
+  /* ========== BRAND (GREEN) ========== */
+  --green-50: #ecfdf5;
+  --green-100: #d1fae5;
+  --green-200: #a7f3d0;
+  --green-300: #6ee7b7;
+  --green-400: #34d399;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --green-700: #047857;
+  --green-800: #065f46;
+  --green-900: #064e3b;
+  --green-950: #022c22;
 
   /* ========== NEUTRAL ========== */
   --neutral-50:  #fafafa;
-  --neutral-100: #f4f4f5;
-  --neutral-200: #e4e4e7;
-  --neutral-300: #d4d4d8;
-  --neutral-400: #a1a1aa;
-  --neutral-500: #71717a;
-  --neutral-600: #52525b;
-  --neutral-700: #3f3f46;
-  --neutral-800: #27272a;
-  --neutral-900: #18181b;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
 
-  /* ========== ACCENT (COMPLEMENTARY) ========== */
-  --accent-500: var(--yellow-600);
-  --accent-600: var(--yellow-700);
+  /* ========== ACCENT (CYAN/TEAL) ========== */
+  --accent-cyan: #00d9ff;
+  --accent-teal: #14b8a6;
+  --accent-500: var(--green-600);
+  --accent-600: var(--green-700);
 
   /* ========== STATUS COLORS ========== */
   --success-500: #10b981;
@@ -46,56 +48,72 @@ html {
   --warning-500: #f59e0b;
   
   /* Focus ring colors with opacity */
-  --focus-ring-primary: rgba(240, 177, 0, 0.25);
+  --focus-ring-primary: rgba(16, 185, 129, 0.25);
   --focus-ring-error: rgba(239, 68, 68, 0.25);
 
-  /* ========== SEMANTIC TOKENS ========== */
-  --color-bg: var(--neutral-50);
+  /* ========== SEMANTIC TOKENS - LIGHT THEME ========== */
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
   --color-surface-elevated: #ffffff;
-  --color-text-primary: var(--neutral-900);
+  --color-text-primary: #1a1a1a;
   --color-text-secondary: var(--neutral-600);
   --color-text-muted: var(--neutral-500);
   --color-border: var(--neutral-200);
-  --color-primary: var(--yellow-500);
-  --color-primary-hover: var(--yellow-600);
-  --color-primary-active: var(--yellow-700);
-  --color-on-primary: #1a1a1a;
-  --color-link: var(--accent-600);
+  --color-primary: var(--green-600);
+  --color-primary-hover: var(--green-700);
+  --color-primary-active: var(--green-800);
+  --color-on-primary: #ffffff;
+  --color-link: var(--green-600);
 
   /* Legacy variable mapping for compatibility */
   --bg-primary: var(--color-bg);
-  --bg-secondary: var(--neutral-100);
+  --bg-secondary: var(--neutral-50);
   --text-primary: var(--color-text-primary);
   --text-secondary: var(--color-text-secondary);
   --border-color: var(--color-border);
   --link-color: var(--color-link);
-  --link-hover-color: var(--accent-500);
+  --link-hover-color: var(--green-700);
   --navbar-bg: var(--color-surface);
-  --footer-bg: var(--neutral-100);
+  --footer-bg: var(--neutral-50);
   --footer-text: var(--color-text-secondary);
   --card-bg: var(--color-surface);
   --input-bg: var(--color-surface);
   --input-border: var(--color-border);
   --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  /* Additional mappings */
+  --primary: var(--green-600);
+  --primary-hover: var(--green-700);
+  --primary-contrast: #ffffff;
+  --success: var(--success-500);
+  --error: var(--error-500);
+  --warning: var(--warning-500);
+  --info: #3b82f6;
+  --success-bg: #d1fae5;
+  --error-bg: #fee2e2;
+  --warning-bg: #fef3c7;
+  --warning-text: #92400e;
+  --info-bg: #dbeafe;
+  --surface: var(--color-surface);
+  --text-muted: var(--color-text-muted);
 }
 
 [data-theme="dark"] {
-  /* ========== BACKGROUND LAYERS ========== */
-  --color-bg: #0f172a;
-  --color-surface: #111827;
-  --color-surface-elevated: #1f2937;
-  --color-text-primary: #f3f4f6;
-  --color-text-secondary: #d1d5db;
-  --color-text-muted: #9ca3af;
-  --color-border: #2d3748;
+  /* ========== BACKGROUND LAYERS - DARK NAVY ========== */
+  --color-bg: #0a0e1a;
+  --color-surface: #151b2b;
+  --color-surface-elevated: #1a1f2e;
+  --color-text-primary: #e6e8eb;
+  --color-text-secondary: #8b92a8;
+  --color-text-muted: #6b7280;
+  --color-border: #1f2937;
 
-  /* Primary adjusted for contrast */
-  --color-primary: var(--yellow-400);
-  --color-primary-hover: var(--yellow-300);
-  --color-primary-active: var(--yellow-200);
-  --color-on-primary: #1a1a1a;
-  --color-link: var(--yellow-400);
+  /* Primary adjusted for dark theme - Cyan accent */
+  --color-primary: var(--accent-cyan);
+  --color-primary-hover: #00e5ff;
+  --color-primary-active: #00bfdd;
+  --color-on-primary: #0a0e1a;
+  --color-link: var(--accent-cyan);
 
   /* Legacy variable mapping for compatibility */
   --bg-primary: var(--color-bg);
@@ -104,14 +122,21 @@ html {
   --text-secondary: var(--color-text-secondary);
   --border-color: var(--color-border);
   --link-color: var(--color-link);
-  --link-hover-color: var(--yellow-300);
+  --link-hover-color: #00e5ff;
   --navbar-bg: var(--color-surface);
   --footer-bg: var(--color-surface);
   --footer-text: var(--color-text-secondary);
   --card-bg: var(--color-surface);
   --input-bg: var(--color-surface-elevated);
   --input-border: var(--color-border);
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  /* Additional mappings for dark theme */
+  --primary: var(--accent-cyan);
+  --primary-hover: #00e5ff;
+  --primary-contrast: #0a0e1a;
+  --surface: var(--color-surface);
+  --text-muted: var(--color-text-muted);
 }
 
 /* Apply theme colors */
@@ -160,7 +185,7 @@ body {
 }
 
 .navbar-brand-text {
-  background: linear-gradient(135deg, var(--yellow-500) 0%, var(--yellow-600) 100%);
+  background: linear-gradient(135deg, var(--green-600) 0%, var(--green-700) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -168,7 +193,7 @@ body {
 }
 
 [data-theme="dark"] .navbar-brand-text {
-  background: linear-gradient(135deg, var(--yellow-400) 0%, var(--yellow-300) 100%);
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-teal) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
