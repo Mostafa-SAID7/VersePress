@@ -10,12 +10,12 @@
 <div class="card h-100 shadow-sm blog-post-card">
     @if (!string.IsNullOrEmpty(Model.FeaturedImageUrl))
     {
-        <img src="@Model.FeaturedImageUrl" class="card-img-top" alt="@title" loading="lazy" style="height: 200px; object-fit: cover;" />
+        <img src="@Model.FeaturedImageUrl" class="card-img-top img-cover" alt="@title" loading="lazy" />
     }
     else
     {
-        <div class="card-img-top bg-gradient d-flex align-items-center justify-content-center" style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <i class="bi bi-file-text text-white" style="font-size: 3rem;"></i>
+        <div class="card-img-top img-placeholder">
+            <i class="bi bi-file-text text-white icon-xl"></i>
         </div>
     }
     

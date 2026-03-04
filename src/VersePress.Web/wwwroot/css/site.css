@@ -1137,3 +1137,79 @@ body.mobile-sidebar-open {
   width: 100%;
   height: 100%;
 }
+
+/* ========== ICON SIZE UTILITIES ========== */
+.icon-sm {
+  font-size: 1.5rem;
+}
+
+.icon-md {
+  font-size: 2rem;
+}
+
+.icon-lg {
+  font-size: 2.5rem;
+}
+
+.icon-xl {
+  font-size: 3rem;
+}
+
+.icon-xxl {
+  font-size: 4rem;
+}
+
+.icon-xxxl {
+  font-size: 5rem;
+}
+
+/* ========== IMAGE UTILITIES ========== */
+.img-cover {
+  height: 200px;
+  object-fit: cover;
+}
+
+.img-placeholder {
+  height: 200px;
+  background: linear-gradient(135deg, var(--green-600) 0%, var(--green-700) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .img-placeholder {
+  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-300) 100%);
+}
+
+/* ========== SPINNER UTILITIES ========== */
+.spinner-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* ========== PROGRESS HEIGHT UTILITIES ========== */
+.progress-lg {
+  height: 24px;
+}
+
+/* ========== SKELETON WIDTH UTILITIES ========== */
+.skeleton-w-80 {
+  width: 80%;
+}
+
+.skeleton-w-70 {
+  width: 70%;
+}
+
+.skeleton-w-60 {
+  width: 60%;
+}
+
+.skeleton-w-150 {
+  width: 150px;
+}
+
+/* ========== FILE PREVIEW ========== */
+.file-preview-hidden {
+  display: none;
+}
