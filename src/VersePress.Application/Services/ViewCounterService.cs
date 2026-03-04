@@ -43,24 +43,23 @@ public class ViewCounterService : IViewCounterService
             return false;
         }
 
-        // Record the view asynchronously without blocking
-        _ = Task.Run(async () =>
+        // Record the view synchronously to avoid context issues
+        try
         {
-            try
-            {
-                await RecordViewAsync(blogPostId, sessionId);
-            }
-            catch (Exception)
-            {
-                // Log error but don't throw - view counting should not break page rendering
-                // In production, this should be logged via ILogger
-            }
-        });
-
-        // Cache the view to prevent duplicate counting
-        _cache.Set(cacheKey, true, ViewWindow);
-
-        return true;
+            await RecordViewAsync(blogPostId, sessionId);
+            
+            // Cache the view to prevent duplicate counting
+            _cache.Set(cacheKey, true, ViewWindow);
+            
+            return true;
+        }
+        catch (Exception)
+        {
+            // Log error but don't throw - view counting should not break page rendering
+            // Cache anyway to prevent repeated failures
+            _cache.Set(cacheKey, true, ViewWindow);
+            return false;
+        }
     }
 
     public async Task<bool> HasViewedRecentlyAsync(Guid blogPostId, string sessionId)
