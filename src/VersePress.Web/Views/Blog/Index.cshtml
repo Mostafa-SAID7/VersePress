@@ -1,40 +1,39 @@
 @using VersePress.Application.DTOs
-@model IEnumerable<BlogPostDto>
+@using VersePress.Web.Models
+@model BlogIndexViewModel
 @{
-    ViewData["Title"] = ViewBag.PageTitle ?? "Blog Posts";
-    var filterType = ViewBag.FilterType as string;
-    var filterValue = ViewBag.FilterValue as string;
+    ViewData["Title"] = "Blog Posts";
 }
 
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
-            @if (!string.IsNullOrEmpty(filterType))
+            @if (!string.IsNullOrEmpty(Model.FilterType))
             {
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
                         <li class="breadcrumb-item"><a asp-controller="Blog" asp-action="Index">Blog</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">@filterType: @filterValue</li>
+                        <li class="breadcrumb-item active" aria-current="page">@Model.FilterType: @Model.FilterValue</li>
                     </ol>
                 </nav>
             }
             
             <h1 class="display-4 mb-4">@ViewData["Title"]</h1>
             
-            @if (!string.IsNullOrEmpty(filterValue))
+            @if (!string.IsNullOrEmpty(Model.FilterValue))
             {
                 <p class="lead text-muted mb-4">
-                    Showing posts for @(filterType?.ToLower() ?? "filter"): <strong>@filterValue</strong>
+                    Showing posts for @(Model.FilterType?.ToLower() ?? "filter"): <strong>@Model.FilterValue</strong>
                 </p>
             }
         </div>
     </div>
     
     <div class="row">
-        @if (Model != null && Model.Any())
+        @if (Model.Posts != null && Model.Posts.Any())
         {
-            @foreach (var post in Model)
+            @foreach (var post in Model.Posts)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card h-100 shadow-sm hover-shadow">
@@ -80,13 +79,13 @@
         }
     </div>
     
-    @if (ViewBag.TotalPages > 1)
+    @if (Model.TotalPages > 1)
     {
         <nav aria-label="Page navigation" class="mt-4">
             <ul class="pagination justify-content-center">
-                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                @for (int i = 1; i <= Model.TotalPages; i++)
                 {
-                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
                         <a class="page-link" href="?page=@i">@i</a>
                     </li>
                 }
