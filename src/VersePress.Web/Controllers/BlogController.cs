@@ -79,8 +79,9 @@ public class BlogController : Controller
                 return NotFound();
             }
 
-            // Increment view count asynchronously
-            _ = _viewCounterService.IncrementViewCountAsync(post.Id, HttpContext.Session.Id);
+            // Increment view count asynchronously (use connection ID as fallback if session not available)
+            var sessionId = HttpContext.Session?.Id ?? HttpContext.Connection.Id;
+            _ = _viewCounterService.IncrementViewCountAsync(post.Id, sessionId);
 
             var comments = await _commentService.GetCommentsByPostAsync(post.Id);
             

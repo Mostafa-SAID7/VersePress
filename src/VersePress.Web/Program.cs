@@ -118,6 +118,16 @@ builder.Services.AddOutputCache();
 // Add memory cache for view counting
 builder.Services.AddMemoryCache();
 
+// Add distributed memory cache and session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+});
+
 // Configure SignalR with JSON serialization options
 builder.Services.AddSignalR()
     .AddJsonProtocol(options =>
@@ -410,6 +420,9 @@ app.UseTheme();
 
 // Enable localization
 app.UseRequestLocalization();
+
+// Enable session
+app.UseSession();
 
 // Enable CORS for SignalR
 app.UseCors("SignalRCorsPolicy");
