@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using VersePress.Application.Interfaces;
@@ -115,8 +116,10 @@ public class BlogController : Controller
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error loading blog post: {Slug}", slug);
-            ViewData["ErrorMessage"] = "Unable to load this blog post. Please try again later.";
-            return View("Errors/Error");
+            return View("Errors/Error", new ErrorViewModel 
+            { 
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+            });
         }
     }
 
