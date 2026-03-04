@@ -29,6 +29,8 @@
 
 <script>
     (function() {
+        'use strict';
+        
         // Get current theme from cookie or localStorage
         function getCurrentTheme() {
             const cookieTheme = document.cookie.split('; ')
@@ -39,7 +41,6 @@
 
         // Set theme cookie
         function setThemeCookie(theme) {
-            // Set cookie for 365 days
             const expires = new Date();
             expires.setFullYear(expires.getFullYear() + 1);
             document.cookie = `theme=${theme}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
@@ -66,19 +67,20 @@
                 }
             }
             
-            // Store in localStorage as backup
             localStorage.setItem('theme', theme);
         }
 
-        // Initialize theme immediately
+        // Initialize theme immediately (before DOM loads)
         const initialTheme = getCurrentTheme();
         applyTheme(initialTheme);
 
         // Setup toggle button when DOM is ready
         function setupToggleButton() {
             const themeToggleBtn = document.getElementById('themeToggleBtn');
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', function() {
+            if (themeToggleBtn && !themeToggleBtn.hasAttribute('data-initialized')) {
+                themeToggleBtn.setAttribute('data-initialized', 'true');
+                themeToggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const currentTheme = getCurrentTheme();
                     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
                     
@@ -88,11 +90,15 @@
             }
         }
 
-        // Try to setup immediately if DOM is ready
+        // Try multiple times to setup the button
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', setupToggleButton);
         } else {
             setupToggleButton();
         }
+        
+        // Also try after a short delay to catch dynamically loaded content
+        setTimeout(setupToggleButton, 100);
+        setTimeout(setupToggleButton, 500);
     })();
 </script>

@@ -1,0 +1,105 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<!-- Mobile Sidebar Overlay -->
+<div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+
+<!-- Mobile Sidebar -->
+<div class="mobile-sidebar" id="mobileSidebar">
+    <div class="mobile-sidebar-header">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <img src="~/favicon.svg" alt="VersePress" class="mobile-sidebar-logo" />
+                <span class="mobile-sidebar-brand">VersePress</span>
+            </div>
+            <button type="button" class="mobile-sidebar-close" id="mobileSidebarClose" aria-label="Close sidebar">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-search">
+        <div class="input-group">
+            <span class="input-group-text bg-transparent border-end-0">
+                <i class="bi bi-search"></i>
+            </span>
+            <input type="text" class="form-control border-start-0" placeholder="@Localizer["Search articles..."]" />
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-content">
+        <div class="mobile-sidebar-section">
+            <h6 class="mobile-sidebar-section-title">@Localizer["Navigation"]</h6>
+            <nav class="mobile-sidebar-nav">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="mobile-sidebar-link">
+                    <i class="bi bi-house-door"></i>
+                    <span>@Localizer["Home"]</span>
+                </a>
+                <a asp-area="" asp-controller="Blog" asp-action="Index" class="mobile-sidebar-link">
+                    <i class="bi bi-newspaper"></i>
+                    <span>Blog</span>
+                </a>
+                <a asp-area="" asp-controller="Home" asp-action="About" class="mobile-sidebar-link">
+                    <i class="bi bi-info-circle"></i>
+                    <span>@Localizer["About"]</span>
+                </a>
+                <a asp-area="" asp-controller="Home" asp-action="Contact" class="mobile-sidebar-link">
+                    <i class="bi bi-envelope"></i>
+                    <span>@Localizer["Contact"]</span>
+                </a>
+                
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-area="" asp-controller="Admin" asp-action="Dashboard" class="mobile-sidebar-link">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>Admin</span>
+                        </a>
+                    }
+                    else if (User.IsInRole("Author"))
+                    {
+                        <a asp-area="" asp-controller="Author" asp-action="Dashboard" class="mobile-sidebar-link">
+                            <i class="bi bi-pencil-square"></i>
+                            <span>Author</span>
+                        </a>
+                    }
+                    <a asp-area="" asp-controller="Account" asp-action="Profile" class="mobile-sidebar-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>@Localizer["Profile"]</span>
+                    </a>
+                }
+            </nav>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-footer">
+        <div class="mobile-sidebar-controls">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="mobile-sidebar-language">
+                    <a href="?culture=en-US" class="language-btn @(System.Globalization.CultureInfo.CurrentCulture.Name == "en-US" ? "active" : "")">EN</a>
+                    <a href="?culture=ar-SA" class="language-btn @(System.Globalization.CultureInfo.CurrentCulture.Name == "ar-SA" ? "active" : "")">AR</a>
+                </div>
+                <partial name="_ThemeToggle" />
+            </div>
+        </div>
+
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <form asp-controller="Account" asp-action="Logout" method="post" class="w-100">
+                <button type="submit" class="btn btn-outline-danger w-100 mb-2">
+                    <i class="bi bi-box-arrow-right me-2"></i>@Localizer["Logout"]
+                </button>
+            </form>
+        }
+        else
+        {
+            <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-outline-primary w-100 mb-2">
+                @Localizer["Sign In"]
+            </a>
+            <a asp-area="" asp-controller="Account" asp-action="Register" class="btn btn-primary w-100">
+                @Localizer["Get Started"]
+            </a>
+        }
+    </div>
+</div>

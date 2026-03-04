@@ -382,15 +382,19 @@ if (app.Environment.IsDevelopment())
 {
     app.Use(async (context, next) =>
     {
-        await next();
-        
-        // Only apply to HTML responses
-        if (context.Response.ContentType?.Contains("text/html") == true)
+        // Set headers BEFORE calling next() to ensure they're set before response starts
+        context.Response.OnStarting(() =>
         {
-            context.Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
-            context.Response.Headers.Append("Pragma", "no-cache");
-            context.Response.Headers.Append("Expires", "0");
-        }
+            if (context.Response.ContentType?.Contains("text/html") == true)
+            {
+                context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                context.Response.Headers["Pragma"] = "no-cache";
+                context.Response.Headers["Expires"] = "0";
+            }
+            return Task.CompletedTask;
+        });
+        
+        await next();
     });
 }
 

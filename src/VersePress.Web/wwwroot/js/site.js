@@ -149,3 +149,84 @@
     }
 
 })();
+
+
+// ============================================
+// MOBILE SIDEBAR
+// ============================================
+
+(function() {
+    'use strict';
+
+    function initMobileSidebar() {
+        const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const mobileSidebarOverlay = document.getElementById('mobileSidebarOverlay');
+        const mobileSidebarClose = document.getElementById('mobileSidebarClose');
+
+        if (!mobileSidebarToggle || !mobileSidebar || !mobileSidebarOverlay) {
+            return;
+        }
+
+        function openSidebar() {
+            mobileSidebar.classList.add('show');
+            mobileSidebarOverlay.classList.add('show');
+            document.body.classList.add('mobile-sidebar-open');
+        }
+
+        function closeSidebar() {
+            mobileSidebar.classList.remove('show');
+            mobileSidebarOverlay.classList.remove('show');
+            document.body.classList.remove('mobile-sidebar-open');
+        }
+
+        // Toggle sidebar
+        mobileSidebarToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            openSidebar();
+        });
+
+        // Close sidebar
+        if (mobileSidebarClose) {
+            mobileSidebarClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeSidebar();
+            });
+        }
+
+        // Close on overlay click
+        mobileSidebarOverlay.addEventListener('click', function() {
+            closeSidebar();
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileSidebar.classList.contains('show')) {
+                closeSidebar();
+            }
+        });
+
+        // Close sidebar when clicking on a link
+        const sidebarLinks = mobileSidebar.querySelectorAll('.mobile-sidebar-link');
+        sidebarLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                closeSidebar();
+            });
+        });
+
+        // Mark active link
+        const currentPath = window.location.pathname;
+        sidebarLinks.forEach(function(link) {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileSidebar);
+    } else {
+        initMobileSidebar();
+    }
+})();

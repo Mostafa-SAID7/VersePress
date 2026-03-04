@@ -1,74 +1,89 @@
 @model RegisterViewModel
 @{
     ViewData["Title"] = "Register";
-    ViewData["FormTitle"] = "Create Account";
-    ViewData["FormSubtitle"] = "Join the VersePress community";
-    ViewData["FormWidth"] = "md";
-    ViewData["FormFooter"] = "<p>Already have an account? <a asp-action=\"Login\">Login here</a></p>";
 }
 
-<partial name="Components/_FormLayout">
-    <form asp-action="Register" method="post">
-        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
-        
-        <partial name="Components/_TextInput" model='new { 
-            Id = "FullName", 
-            Name = "FullName", 
-            Label = "Full Name", 
-            Type = "text", 
-            Required = true,
-            Value = Model?.FullName
-        }' />
-        
-        <partial name="Components/_TextInput" model='new { 
-            Id = "UserName", 
-            Name = "UserName", 
-            Label = "Username", 
-            Type = "text", 
-            Required = true,
-            Value = Model?.UserName
-        }' />
-        
-        <partial name="Components/_TextInput" model='new { 
-            Id = "Email", 
-            Name = "Email", 
-            Label = "Email Address", 
-            Type = "email", 
-            Required = true,
-            Value = Model?.Email
-        }' />
-        
-        <partial name="Components/_TextInput" model='new { 
-            Id = "Password", 
-            Name = "Password", 
-            Label = "Password", 
-            Type = "password", 
-            Required = true,
-            Value = Model?.Password
-        }' />
-        
-        <partial name="Components/_TextInput" model='new { 
-            Id = "ConfirmPassword", 
-            Name = "ConfirmPassword", 
-            Label = "Confirm Password", 
-            Type = "password", 
-            Required = true,
-            Value = Model?.ConfirmPassword
-        }' />
-        
-        <partial name="Components/_TextArea" model='new { 
-            Id = "Bio", 
-            Name = "Bio", 
-            Label = "Bio (Optional)", 
-            Rows = 3,
-            Value = Model?.Bio
-        }' />
-        
-        <div class="d-grid mt-4">
-            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+<div class="form-layout-container">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="form-layout-title text-center mb-1">Create Account</h2>
+                        <p class="form-layout-subtitle text-center text-muted mb-4">Join the VersePress community</p>
+                        
+                        <div class="form-layout-content">
+                            <form asp-action="Register" method="post">
+                                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                                
+                                <partial name="Components/_TextInput" model='new { 
+                                    Id = "FullName", 
+                                    Name = "FullName", 
+                                    Label = "Full Name", 
+                                    Type = "text", 
+                                    Required = true,
+                                    Value = Model?.FullName
+                                }' />
+                                
+                                <partial name="Components/_TextInput" model='new { 
+                                    Id = "UserName", 
+                                    Name = "UserName", 
+                                    Label = "Username", 
+                                    Type = "text", 
+                                    Required = true,
+                                    Value = Model?.UserName
+                                }' />
+                                
+                                <partial name="Components/_TextInput" model='new { 
+                                    Id = "Email", 
+                                    Name = "Email", 
+                                    Label = "Email Address", 
+                                    Type = "email", 
+                                    Required = true,
+                                    Value = Model?.Email
+                                }' />
+                                
+                                <partial name="Components/_TextInput" model='new { 
+                                    Id = "Password", 
+                                    Name = "Password", 
+                                    Label = "Password", 
+                                    Type = "password", 
+                                    Required = true,
+                                    Value = Model?.Password
+                                }' />
+                                
+                                <partial name="Components/_TextInput" model='new { 
+                                    Id = "ConfirmPassword", 
+                                    Name = "ConfirmPassword", 
+                                    Label = "Confirm Password", 
+                                    Type = "password", 
+                                    Required = true,
+                                    Value = Model?.ConfirmPassword
+                                }' />
+                                
+                                <partial name="Components/_TextArea" model='new { 
+                                    Id = "Bio", 
+                                    Name = "Bio", 
+                                    Label = "Bio (Optional)", 
+                                    Rows = 3,
+                                    Value = Model?.Bio
+                                }' />
+                                
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="form-layout-footer text-center mt-4">
+                            <p>Already have an account? <a asp-action="Login">Login here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-</partial>
+    </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

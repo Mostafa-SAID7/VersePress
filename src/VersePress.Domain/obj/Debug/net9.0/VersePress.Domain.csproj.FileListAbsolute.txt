@@ -1,13 +1,13 @@
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\bin\Debug\net9.0\VersePress.Domain.deps.json
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\bin\Debug\net9.0\VersePress.Domain.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\bin\Debug\net9.0\VersePress.Domain.pdb
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.csproj.AssemblyReference.cache
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.AssemblyInfoInputs.cache
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.AssemblyInfo.cs
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.sourcelink.json
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\refint\VersePress.Domain.dll
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.pdb
 C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\ref\VersePress.Domain.dll
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.sourcelink.json
-C:\Users\Memo\Desktop\Projects\Blog\VersePress\src\VersePress.Domain\obj\Debug\net9.0\VersePress.Domain.csproj.AssemblyReference.cache
